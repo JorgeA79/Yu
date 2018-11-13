@@ -6,10 +6,10 @@ client.on('ready',() => {
 });
 
 var prefix = "y!"
-var prefix2 = "Y!"
+var xprefix2 = "Y!"
 client.on('message', message => {
 	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'ping')) {
+	if (message.content.startsWith(prefix || xprefix+ 'ping')) {
 	
 		 message.channel.send(`Pong! :ping_pong:  \`${Date.now() - message.createdTimestamp} ms\``);
 	}
