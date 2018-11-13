@@ -9,7 +9,7 @@ var prefix = "y!"
 var xprefix2 = "Y!"
 client.on('message', message => {
 	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix || xprefix + 'ping')) {
+	if (message.content.startsWith(prefix + 'ping')) {
 	
 		 message.channel.send(`Pong! :ping_pong:  \`${Date.now() - message.createdTimestamp} ms\``);
 	}
@@ -17,7 +17,7 @@ client.on('message', message => {
 
 client.on('message', message => {
 	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix || xprefix + 'ping2')) {
+	if (message.content.startsWith(prefix + 'ping2')) {
 	const embed = new Discord.RichEmbed()
   .setAuthor("Yu", "https://cdn.discordapp.com/avatars/511749990167740440/9de74058348dc21c675c49721702b3b0.jpg?size=1024")
   /*
