@@ -1,6 +1,6 @@
 {
-  "name": "Powai",
-  "description": "Discord Bot",
+  "name": "Yu",
+  "description": "",
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
