@@ -1,2 +1,2 @@
-# Yu
-Bot
+# Powai
+Discord bot
