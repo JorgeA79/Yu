@@ -15,13 +15,6 @@ client.on('message', message => {
 	}
 });
   
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'nelson')) {
-	
-		 message.channel.send(`es puto xd`);
-	}
-});
 
 client.login(process.env.BOT_TOKEN);
 
