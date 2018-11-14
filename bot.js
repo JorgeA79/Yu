@@ -6,6 +6,7 @@ const client = new Discord.Client();
 var prefix = "y!"
 var xprefix2 = "Y!"
 
+   
 client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'ping')) {
