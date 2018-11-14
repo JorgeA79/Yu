@@ -2,11 +2,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready',() => {
-	   client.user.setPresence({game: {name: " | ", type: 0}});
+	   client.user.setPresence({game: {name: " to save the world ", type: 0}});
 });
 
 var prefix = "y!"
 var xprefix2 = "Y!"
+
 client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'ping')) {
