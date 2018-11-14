@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('ready',() => {
-	   client.user.setPresence({game: {name: " to save the world ", type: 0}});
-});
+
 
 var prefix = "y!"
 var xprefix2 = "Y!"
