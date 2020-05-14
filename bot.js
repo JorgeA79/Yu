@@ -8,6 +8,20 @@ client.on('ready',() => {
  	  
 });
 
+
+var triviadb = [
+	      "What does NIA love?",
+	      "Who did NIA met first?",
+	      "Newest of the group?",
+	      "How is NIAS memory?"]
+var trivianswersdb = [
+	      "Peanut Butter",
+	      "Ammy",
+	      "Pixel",
+		   "Terrible"]
+
+
+
 var prefix = "p!"
 var answers = 
     			["It is certain",
@@ -212,6 +226,51 @@ client.on('message', message => {
 	}
 		
 });
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'trivia')) {
+		
+		var selectkilldb = [Math.floor(Math.random() * triviadb.length)];
+        var qselx = triviadb[selectkilldb]
+	 var ansselx = trivianswersdb[selectkilldb]
+        
+		 
+	message.channel.send(qselx + '\`30 seconds to answer, make sure to write all with CAPS\`')
+.then(() => {
+		
+  message.channel.awaitMessages(response => response.content === ansselx, {
+    max: 1,
+    time: 30000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+	  const embed = new Discord.RichEmbed()
+
+  .setTitle("You are right")
+
+  .setColor(0x7AFFA8)
+  .setImage("https://media1.tenor.com/images/1a3e80b2d8b08e39d3a7355dc23a88db/tenor.gif?itemid=15018586")
+
+
+  message.channel.send({embed});
+
+    })
+    .catch(() => {
+      message.channel.send('AWWWW RIP <:oop:694790743121985597>  ');
+    });
+});
+	
+	}
+});
+
 
 client.login(process.env.BOT_TOKEN);
 
