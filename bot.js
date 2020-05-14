@@ -57,7 +57,7 @@ client.on('message', message => {
 		return message.reply("Try mentioning the person");	
 		
 		var selectSlap = slapgifs[Math.floor(Math.random() * slapgifs.length)];
-		  message.channel.send(`**${message.author.username}** hugged **${member.user.username}**`);
+		  message.channel.send(`**${message.author.username}** slapped **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
 
   .setImage(selectSlap)
