@@ -92,12 +92,12 @@ client.on('message', message => {
 		
 	const embed = new Discord.RichEmbed()
   .setTitle("Pixel's Commands")
-   .setColor(0x7AFFA8)
+   .setColor(0xC76CF5)
   .setDescription("Here you can find the main commands of the bot so you wont get confused")
 .setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
 
   .addField("Main Commands",
-    "\`help\`,\`ping\`,\`invite\`,\`server\`")
+    "\`help\`,\`ping\`,\`server\`")
 
   .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`")
 .addField("Roleplay Commands", "\`hug\`,\`slap\`")
@@ -126,7 +126,7 @@ client.on('message', message => {
 
   .setTitle("Head")
 
-  .setColor(0x7AFFA8)
+  .setColor(0xC76CF5)
   .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
 
 
@@ -137,7 +137,7 @@ client.on('message', message => {
 
   .setTitle("Tail")
 
-  .setColor(0x7AFFA8)
+  .setColor(0xC76CF5)
   .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
 		
 
@@ -157,7 +157,7 @@ client.on('message', message => {
 
   .setTitle("Head")
 
-  .setColor(0x7AFFA8)
+  .setColor(0xC76CF5)
   .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
 
 
@@ -168,7 +168,7 @@ client.on('message', message => {
 
   .setTitle("Tail")
 
-  .setColor(0x7AFFA8)
+  .setColor(0xC76CF5)
   .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
 		
 
@@ -178,6 +178,32 @@ client.on('message', message => {
     	}
 		
 	}
+});
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'server')) {
+
+		const embed = new Discord.RichEmbed()
+  .setTitle("> Click to join our server <")
+  /*
+   * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
+   */
+  .setColor(0xC76CF5) 
+  
+  .setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
+  /*
+   * Takes a Date object, defaults to current date.
+   */
+  .setTimestamp()
+  .setURL("https://discord.gg/gwFXT55")
+  
+
+  message.channel.send({embed});
+		
+		 
+	}
+		
 });
 
 client.login(process.env.BOT_TOKEN);
