@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();		    
 const MusicBotAddon = require("discord-dynamic-music-bot-addon");
 const prefixx = "p!";
-const YOUTUBE_API_KEY = '';
+const YOUTUBE_API_KEY = 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc';
  
 const options = {
   // messageUpdateRate: number, // how fast should message be updated in second. Under 5 seconds its not going to work. (default: 5)
