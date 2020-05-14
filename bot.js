@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const app = require('discord-music-app’ ); // require discord-music-app
 
+app.music();
 
 client.on('ready',() => {
 	
