@@ -131,7 +131,7 @@ client.on('message', message => {
 
 
   message.channel.send({embed});
-		 message.channel.send(`You got me <:anime:405162482370347019>`);
+		 message.channel.send(`You got me <:wholesomekermit:705354033799364628>`);
     	} else if (result == 2) {
     		const embed = new Discord.RichEmbed()
 
@@ -142,7 +142,7 @@ client.on('message', message => {
 		
 
   message.channel.send({embed});
-		 message.channel.send(`WOOOOOOOOOOO <:smug_maeve:405166781976674304>`);
+		 message.channel.send(`WOOOOOOOOOOO <:wholesomekermit:705354033799364628>`);
     	}
 		
 	}
