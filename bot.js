@@ -1,9 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const yt = require('ytdl-core');
-const opus = require('node-opus');
-const ffmpeg = require('ffmpeg');
-const playArbitraryFFmpeg = require('discord.js-arbitrary-ffmpeg');
 
 
 client.on('ready',() => {
@@ -303,58 +299,7 @@ client.on('message', message => {
 	}
 });
 
-//Music System
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'play')) {
-	
-		  const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel){
-      return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    }
-	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    voiceChannel.join()
-    .then(connection => {
-	const args = message.content.split(" ").slice(1);
-      let stream = yt(args.join(" "), {audioonly: true});
-      yt.getInfo(args.join(" "), function(err, info) {
-      const title = info.title
-	  message.channel.sendMessage(`Now playing \`${title}\``)
-      })
-      const dispatcher = connection.playStream(stream);
-      dispatcher.on('end', () => {
-         voiceChannel.leave();
-       }).catch(e =>{
-         console.error(e);
-       });
-    })
-	}
-});
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'join')) {
-	
-		  const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel){
-      return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    }
-	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    voiceChannel.join()
-		
-	}
-	});
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'leave')) {
-	
-		  const voiceChannel = message.member.voiceChannel;
-     voiceChannel.leave();
-		message.channel.sendMessage(":white_check_mark: **Disconnected!**");
-	}
-	});
+
 
 
 client.login(process.env.BOT_TOKEN);
