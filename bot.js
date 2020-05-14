@@ -13,12 +13,28 @@ var triviadb = [
 	      "What does NIA love?",
 	      "Who did NIA met first?",
 	      "Newest of the group?",
-	      "How is NIAS memory?"]
+	      "How is NIAS memory?",
+"What colour does PIXEL like?",
+"Who does PIXEL love?",
+"Who is the middle child in JAPAN?",
+"Who is the eldest in JAPAN?",
+"Who is the youngest in JAPAN?",
+"What does Nia crave 24/7?",
+"What’s Nia favorite drink?",
+"What happened when Nia is bored?"]
 var trivianswersdb = [
 	      "PEANUT BUTTER",
 	      "AMMY",
 	      "PIXEL",
-		   "TERRIBLE"]
+		   "TERRIBLE",
+"PURPLE",
+"MARYLL",
+"PIXEL",
+"JELLY",
+"NIA",
+"NOODLES",
+"MILK",
+"BE PRODUCTIVE"]
 
 
 
