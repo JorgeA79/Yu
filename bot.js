@@ -1,14 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
-const token = 'NzEwMzczMzA5Mjc5MTA5MTI5.XrzhPg.90C3D75Wss9S80dj_PrVE62ipkI’; // Set The Token
 
-const prefix = 'p!’; // Set The Prefix
-
-const embedColor = '0xC76CF5’; // Set The Embed Color
-
-const app = require('discord-music-app’ ); // require discord-music-app
-
-app.music()
 
 client.on('ready',() => {
 	
