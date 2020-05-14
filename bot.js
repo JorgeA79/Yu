@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
-
+const music = require('discord.music.js');
+music(client);
 
 client.on('ready',() => {
 	
