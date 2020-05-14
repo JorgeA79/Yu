@@ -30,7 +30,7 @@ var triviadb = [
 		"What is JELLY's ETHNICITY?",
 		"Where does JELLY live?",
 		"Where did PIXEL meet NIA?"
-	]
+	];
 
 var trivianswersdb = [
 	        "PEANUT BUTTER",
@@ -49,11 +49,11 @@ var trivianswersdb = [
 		"FILIPINO",
 		"CHINESE",
 		"AUSTRALIA",
-		"MINECRAFT VIDEO"]
+		"MINECRAFT VIDEO"];
 
 
 
-var prefix = "p!"
+var prefix = "p!";
 var answers = 
     			["It is certain",
 			"It is decidedly so",
