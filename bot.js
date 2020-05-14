@@ -100,7 +100,7 @@ client.on('message', message => {
     "\`help\`,\`ping\`,\`invite\`,\`server\`")
 
   .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`")
-.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kill\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`")
   message.author.send({embed});
 message.channel.send(`${message.author.username} i sent you a message that will help you a bit :mailbox_with_mail:`)
 		
