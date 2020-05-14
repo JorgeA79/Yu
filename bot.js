@@ -49,7 +49,7 @@ client.on('message', message => {
 client.on('message', message => {
 	if (message.author === client.user) return;
 	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'hug')) {
+	if (message.content.startsWith(prefix + 'slap')) {
 		
 		
   	let member = message.mentions.members.first();
