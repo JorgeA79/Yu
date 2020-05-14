@@ -9,6 +9,6 @@
   "dependencies": {
     "discord.js": "11.4.2",
     "request": "2.81.0",
-    "discord-music-dem": "11.2.0"
+    "discord.music.js": "1.0.0"
   }
 }
