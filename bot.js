@@ -10,31 +10,43 @@ client.on('ready',() => {
 
 
 var triviadb = [
-	      "What does NIA love?",
-	      "Who did NIA met first?",
-	      "Newest of the group?",
-	      "How is NIAS memory?",
-"What colour does PIXEL like?",
-"Who does PIXEL love?",
-"Who is the middle child in JAPAN?",
-"Who is the eldest in JAPAN?",
-"Who is the youngest in JAPAN?",
-"What does Nia crave 24/7?",
-"What’s Nia favorite drink?",
-"What happened when Nia is bored?"]
+	        "What does NIA love?",
+	        "Who did NIA met first?",
+	        "Newest of the group?",
+	     	"How is NIAS memory?",
+		"What colour does PIXEL like?",
+		"Who does PIXEL love?",
+		"Who is the middle child in JAPAN?",
+		"Who is the eldest in JAPAN?",
+		"Who is the youngest in JAPAN?",
+		"What does Nia crave 24/7?",
+		"What’s Nia favorite drink?",
+		"What happened when Nia is bored?",
+		"What is NIA's ethnicity?",
+		"What is AMMY/ALDRIN/PIXEL's ethnicity?",
+		"What is JELLY's ETHNICITY?",
+		"Where does JELLY live?",
+		"Where did PIXEL meet NIA?"
+	]
+
 var trivianswersdb = [
-	      "PEANUT BUTTER",
-	      "AMMY",
-	      "PIXEL",
-		   "TERRIBLE",
-"PURPLE",
-"MARYLL",
-"PIXEL",
-"JELLY",
-"NIA",
-"NOODLES",
-"MILK",
-"BE PRODUCTIVE"]
+	        "PEANUT BUTTER",
+	        "AMMY",
+	        "PIXEL",
+		"TERRIBLE",
+		"PURPLE",
+		"MARYLL",
+		"PIXEL",
+		"JELLY",
+		"NIA",
+		"NOODLES",
+		"MILK",
+		"BE PRODUCTIVE",
+		"INDONESIAN",
+		"FILIPINO",
+		"CHINESE",
+		"AUSTRALIA",
+		"MINECRAFT VIDEO"]
 
 
 
