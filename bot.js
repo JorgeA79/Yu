@@ -1,6 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+
+client.on('ready',() => {
+	
+	   client.user.setPresence({game: {name: "with my Clone :D", type: 0}});
+ 	  
+});
+
 var prefix = "p!"
 var answers = 
     			["It is certain",
