@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 client.on('ready',() => {
 	
-	   client.user.setPresence({game: {name: "with my Clone :D", type: 0}});
+	   client.user.setPresence({game: {name: "in JAPAN", type: 0}});
  	  
 });
 
