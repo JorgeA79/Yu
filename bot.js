@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
-
+const music = require('discord.music.js');
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
+
+music(client);
 
 
 client.on('ready',() => {
