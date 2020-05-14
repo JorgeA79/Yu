@@ -8,7 +8,10 @@ var hugifs =  [
  "https://i.imgur.com/r9aU2xv.gif",
  "https://i.pinimg.com/originals/4d/89/d7/4d89d7f963b41a416ec8a55230dab31b.gif"];
 
-
+var slapgifs =  [
+	 "https://media1.tenor.com/images/b6d8a83eb652a30b95e87cf96a21e007/tenor.gif?itemid=10426943",
+ "https://media.giphy.com/media/Zau0yrl17uzdK/giphy.gif",
+ "https://i.pinimg.com/originals/4e/9e/a1/4e9ea150354ad3159339b202cbc6cad9.gif"];
 
 
 client.on('guildMemberAdd', member => {
@@ -43,7 +46,24 @@ client.on('message', message => {
 	}
 });
 
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'hug')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap = slapgifs[Math.floor(Math.random() * slapgifs.length)];
+		  message.channel.send(`**${message.author.username}** hugged **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
 
+  .setImage(selectSlap)
+   message.channel.send({embed});
+	}
+});
 
 client.login(process.env.BOT_TOKEN);
 
