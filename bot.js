@@ -2,6 +2,27 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 var prefix = "p!"
+var answers = 
+    			["It is certain",
+			"It is decidedly so",
+			"Without a doubt",
+			"Yes, definitely",
+			"You may rely on it",
+			"As I see it, yes",
+			"Most likely",
+			"Outlook good",
+			"Yes",
+			"Signs point to yes",
+			"Reply hazy try again",
+			"Ask again later",
+			"Better not tell you now",
+			"Cannot predict now",
+			"Concentrate and ask again",
+			"Don't count on it",
+			"My reply is no",
+			"My sources say no",
+			"Outlook not so good",
+			"Very doubtful"];
 var hugifs =  [
 	 "https://media.tenor.com/images/b6d0903e0d54e05bb993f2eb78b39778/tenor.gif",
  "https://i.pinimg.com/originals/85/dc/ef/85dcef131af84b515106955e142df54e.gif",
@@ -62,6 +83,100 @@ client.on('message', message => {
 
   .setImage(selectSlap)
    message.channel.send({embed});
+	}
+});
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'help')) {
+		
+	const embed = new Discord.RichEmbed()
+  .setTitle("Pixel's Commands")
+   .setColor(0x7AFFA8)
+  .setDescription("Here you can find the main commands of the bot so you wont get confused")
+.setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
+
+  .addField("Main Commands",
+    "\`help\`,\`ping\`,\`invite\`,\`server\`")
+
+  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kill\`")
+  message.author.send({embed});
+message.channel.send(`${message.author.username} i sent you a message that will help you a bit :mailbox_with_mail:`)
+		
+	}
+});
+
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + '8ball')) {
+	var r8ballAnswer = answers[Math.floor(Math.random() * answers.length)];
+		message.channel.send(r8ballAnswer);
+	}
+});
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'flip head')) {
+		
+	 	var result = Math.floor((Math.random() * 2) + 1);
+    	if (result == 1) {
+    		const embed = new Discord.RichEmbed()
+
+  .setTitle("Head")
+
+  .setColor(0x7AFFA8)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+
+
+  message.channel.send({embed});
+		 message.channel.send(`You got me <:anime:405162482370347019>`);
+    	} else if (result == 2) {
+    		const embed = new Discord.RichEmbed()
+
+  .setTitle("Tail")
+
+  .setColor(0x7AFFA8)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+		
+
+  message.channel.send({embed});
+		 message.channel.send(`WOOOOOOOOOOO <:smug_maeve:405166781976674304>`);
+    	}
+		
+	}
+});
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'flip tail')) {
+		
+	 	var result = Math.floor((Math.random() * 2) + 1);
+    	if (result == 1) {
+    		const embed = new Discord.RichEmbed()
+
+  .setTitle("Head")
+
+  .setColor(0x7AFFA8)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+
+
+  message.channel.send({embed});
+		 message.channel.send(`WOOOOOOOOOOO <:smug_maeve:405166781976674304>`);
+    	} else if (result == 2) {
+    		const embed = new Discord.RichEmbed()
+
+  .setTitle("Tail")
+
+  .setColor(0x7AFFA8)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+		
+
+  message.channel.send({embed});
+		
+		 message.channel.send(`You got me <:anime:405162482370347019>`);
+    	}
+		
 	}
 });
 
