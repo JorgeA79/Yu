@@ -9,6 +9,6 @@
   "dependencies": {
     "discord.js": "11.4.2",
     "request": "2.81.0",
-    "discord.music.js": "1.0.0"
+    "discord-dynamic-music-bot-addon": "2.1.9"
   }
 }
