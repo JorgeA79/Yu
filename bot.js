@@ -1,10 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
-const music = require('discord.music.js');
+var adminrole = "Admin"
+var prefixx = "p!"
+var YTapikey = "AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc"
+const music = require("easy-discord-music")
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
 
-music(client);
+var discordlogin = "false"
+var helpshow = false 
+music.init(adminrole,prefixx,YTapikey,1,helpshow,discordlogin)
+
 
 
 client.on('ready',() => {
