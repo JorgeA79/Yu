@@ -15,10 +15,10 @@ var triviadb = [
 	      "Newest of the group?",
 	      "How is NIAS memory?"]
 var trivianswersdb = [
-	      "Peanut Butter",
-	      "Ammy",
-	      "Pixel",
-		   "Terrible"]
+	      "PEANUT BUTTER",
+	      "AMMY",
+	      "PIXEL",
+		   "TERRIBLE"]
 
 
 
