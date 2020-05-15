@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
-const ytdl = require("discord-ytdl-core");
+
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
 
