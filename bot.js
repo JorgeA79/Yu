@@ -4,8 +4,12 @@ const client = new Discord.Client();
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
 
-
-
+const { Player } = require("discord-player");
+// Create a new Player (Youtube API key is your Youtube Data v3 key)
+const player = new Player(client, "AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc");
+// To easily access the player
+client.player = player;
+ 
 
 
 client.on('ready',() => {
