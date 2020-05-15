@@ -316,15 +316,37 @@ client.on('message', message => {
 
 ////////////////////////////////Music
 
-client.on("message", msg => {
-    if (msg.author.bot || !msg.guild) return;
-    if (msg.content === "play") {
-        if (!msg.member.voice.channel) return msg.channel.send("You're not in a voice channel?");
-	    
-	   msg.channel.send("owo"); 
-	    
+client.on('message', message => {
+	if (message.author === client.user) return;
+
+	if (message.content.startsWith(prefix + 'topplay 2')) {
+		
+	   
+		
+		  const voiceChannel = message.member.voiceChannel;
+    	if (!voiceChannel){
+		
+      return message.channel.sendMessage(":x: You are not in a voice channel!!");
+    }
+	message.channel.sendMessage(":white_check_mark: **Connected!**");
+    voiceChannel.join()
+    .then(connection => {
+	const args = "https://www.youtube.com/watch?v=Ii7jSGxDwPM";
+	
+      let stream = yt(args, {audioonly: true});
+      yt.getInfo(args, function(err, info) {
+      const title = info.title
+	  message.channel.sendMessage(`Now playing \`${title}\``)
+      })
+      const dispatcher = connection.playStream(stream);
+      dispatcher.on('end', () => {
+         voiceChannel.leave();
+       }).catch(e =>{
+         console.error(e);
+       });
+    })
 	}
-});
+	});
 
 
 
