@@ -6,8 +6,6 @@ const client = new Discord.Client();
 
 
 
-
-
 client.on('ready',() => {
 	
 	   client.user.setPresence({game: {name: "in JAPAN | p!help", type: 0}});
@@ -298,7 +296,17 @@ client.on('message', message => {
 
     })
     .catch(() => {
-      message.channel.send('AWWWW RIP <:oop:694790743121985597>  ');
+	
+	  var answersW = [
+	 	 "Aww Rip",
+		 "F",
+		 "You lose qwp"
+	  ];
+	  
+	  var selectanswerW = [Math.floor(Math.random() * answersW.length)];  
+
+      message.channel.send(selectanswerW +' <:oop:694790743121985597>  ');
+  
     });
 });
 	
