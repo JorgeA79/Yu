@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
-const ytdl = require("discord-ytdl-core");
 
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
@@ -307,44 +306,6 @@ client.on('message', message => {
 });
 
 
-client.on("message", msg => {
-    if (msg.author.bot || !msg.guild) return;
-    if (msg.content === prefix + "play") {
-        if (!msg.member.voice.channel) return msg.channel.send("You're not in a voice channel?");
-        let stream = ytdl("https://youtube.com/watch?v=ERu6jh_1gR0", {
-            filter: "audioonly",
-            encoderArgs: [
-                '-af',
-                'equalizer=f=40:width_type=h:width=50:g=10'
-            ] // FFmpeg args array (optional)
-        });
-        
-        msg.member.voice.channel.join()
-        .then(connection => {
-            connection.play(stream, {
-                type: "opus" // type: opus is compulsory because this package returns opus stream
-            })
-            .on("finish", () => {
-                msg.guild.me.voice.channel.leave();
-            })
-        });
-    }
-});
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'join')) {
-	
-		  const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel){
-      return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    }
-	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    voiceChannel.join()
-		
-	}
-	});
 
 client.login(process.env.BOT_TOKEN);
 
