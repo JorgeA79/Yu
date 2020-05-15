@@ -314,5 +314,36 @@ client.on('message', message => {
 
 
 
+////////////////////////////////Music
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'play')) {
+	 if (!message.member.voice.channel) return message.channel.send("You're not in a voice channel?");
+		message.channel.send("Connected");
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
 
