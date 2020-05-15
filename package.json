@@ -10,7 +10,6 @@
     "discord.js": "11.4.2",
     "request": "2.81.0",
     "discord-player":"1.4.1",
-    "opusscript":"0.0.7",
-    "ffmepg":"0.0.2"
+    "opusscript":"0.0.7"
   }
 }
