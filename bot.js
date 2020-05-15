@@ -4,15 +4,7 @@ const client = new Discord.Client();
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
 
-const Bot = require('ctk-musicbot');
- 
-const musicbot = new Bot({
-  Token: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc',
-  prefix: 'p!'
-});
 
-
-musicbot.start();
 
 client.on('ready',() => {
 	
