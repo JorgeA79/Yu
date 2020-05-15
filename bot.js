@@ -3,12 +3,7 @@ const client = new Discord.Client();
 
 
  //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
-const token = 'process.env.BOT_TOKEN’; // Set The Token
-const prefix = 'p!’; // Set The Prefix
-const embedColor = 'c368f7’; // Set The Embed Color
-const app = require('discord-music-app’ ); // require discord-music-app
 
-app.music(); // Places all of the app's code right into your app
 
 client.on('ready',() => {
 	
@@ -16,7 +11,7 @@ client.on('ready',() => {
  	  
 });
 
-
+var prefix = "p!"; 
 var triviadb = [
 	        "What does NIA love?",
 	        "Who did NIA met first?",
