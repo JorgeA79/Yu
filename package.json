@@ -10,6 +10,5 @@
     "discord.js": "11.4.2",
     "request": "2.81.0",
     "ytdl-core": "2.1.2",
-    "ffmepg": "0.0.2"
   }
 }
