@@ -317,25 +317,17 @@ client.on('message', message => {
 ////////////////////////////////Music
 
 client.on('message', message => {
-	if (message.author === client.user) return;
+  if (message.content === '!play') {
+    // Note that this will only work if the message was sent in a guild
+    // and the author is actually in a voice channel.
+    // You might want to check for all that stuff first
+    const channel = message.member.voiceChannel;
 
-	if (message.content.startsWith(prefix + 'play')) {
-		
-		
-		  const voiceChannel = message.member.voiceChannel;
-    	
-		if (!voiceChannel){
-		
-      return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    }
-	
-	    voiceChannel.join()
-     		.then(connection => {
-		    message.channel.sendMessage(":white_check_mark: **Connected!**");
-	    })
-	}
-	});
-
+    channel.join()
+    .then(connection => console.log('Connected!'))
+    .catch(console.error);
+  }
+});
 
 
 
