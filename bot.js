@@ -321,7 +321,6 @@ client.on('message', message => {
 
 	if (message.content.startsWith(prefix + 'topplay 2')) {
 		
-	   
 		
 		  const voiceChannel = message.member.voiceChannel;
     	if (!voiceChannel){
@@ -330,21 +329,7 @@ client.on('message', message => {
     }
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
     voiceChannel.join()
-    .then(connection => {
-	const args = "https://www.youtube.com/watch?v=Ii7jSGxDwPM";
-	
-      let stream = yt(args, {audioonly: true});
-      yt.getInfo(args, function(err, info) {
-      const title = info.title
-	  message.channel.sendMessage(`Now playing \`${title}\``)
-      })
-      const dispatcher = connection.playStream(stream);
-      dispatcher.on('end', () => {
-         voiceChannel.leave();
-       }).catch(e =>{
-         console.error(e);
-       });
-    })
+    
 	}
 	});
 
