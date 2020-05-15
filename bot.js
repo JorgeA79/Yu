@@ -11,6 +11,9 @@ const musicbot = new Bot({
   prefix: 'p!'
 });
 
+
+musicbot.start();
+
 client.on('ready',() => {
 	
 	   client.user.setPresence({game: {name: "in JAPAN | p!help", type: 0}});
