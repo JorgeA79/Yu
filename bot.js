@@ -323,12 +323,13 @@ client.on('message', message => {
 		
 		
 		  const voiceChannel = message.member.voiceChannel;
-    	if (!voiceChannel){
+    	
+		if (!voiceChannel){
 		
       return message.channel.sendMessage(":x: You are not in a voice channel!!");
     }
 	
-	    message.member.voiceChannel.join()
+	    voiceChannel.join()
      		.then(connection => {
 		    message.channel.sendMessage(":white_check_mark: **Connected!**");
 	    })
