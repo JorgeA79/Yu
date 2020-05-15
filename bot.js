@@ -280,7 +280,7 @@ client.on('message', message => {
 		
   message.channel.awaitMessages(response => response.content === ansselx, {
     max: 1,
-    time: 30000,
+    time: 15000,
     errors: ['time'],
   })
   .then((collected) => {
