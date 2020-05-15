@@ -316,11 +316,13 @@ client.on('message', message => {
 
 ////////////////////////////////Music
 
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'play')) {
-	 if (!message.member.voice.channel) return message.channel.send("You're not in a voice channel?");
-		message.channel.send("Connected");
+client.on("message", msg => {
+    if (msg.author.bot || !msg.guild) return;
+    if (msg.content === "play") {
+        if (!msg.member.voice.channel) return msg.channel.send("You're not in a voice channel?");
+	    
+	   msg.channel.send("owo"); 
+	    
 	}
 });
 
