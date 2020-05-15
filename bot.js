@@ -319,7 +319,7 @@ client.on('message', message => {
 client.on('message', message => {
 	if (message.author === client.user) return;
 
-	if (message.content.startsWith(prefix + 'topplay 2')) {
+	if (message.content.startsWith(prefix + 'play')) {
 		
 		
 		  const voiceChannel = message.member.voiceChannel;
@@ -328,7 +328,7 @@ client.on('message', message => {
       return message.channel.sendMessage(":x: You are not in a voice channel!!");
     }
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    voiceChannel.join()
+	    message.member.voiceChannel.join()
     
 	}
 	});
