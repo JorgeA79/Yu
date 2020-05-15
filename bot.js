@@ -304,8 +304,8 @@ client.on('message', message => {
 	  ];
 	  
 	  var selectanswerW = [Math.floor(Math.random() * answersW.length)];  
-
-      message.channel.send(selectanswerW +' <:oop:694790743121985597>  ');
+	  var qselW = answersW[selectanswerW]
+      message.channel.send(qselW +' <:oop:694790743121985597>  ');
   
     });
 });
