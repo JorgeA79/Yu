@@ -178,26 +178,6 @@ client.on('message', message => {
 	}
 });
 
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'blowjob')) {
-		
-		
-  	let member = message.mentions.members.first();
-		 if(!member) 
-		return message.reply("Try mentioning the person");	
-		
-		var selectSlap = slapgifs[Math.floor(Math.random() * slapgifs.length)];
-		  message.channel.send(`**${message.author.username}** sucked **${member.user.username}'s ** Dick`);
-		const embed = new Discord.RichEmbed()
-
-  .setImage("https://xxgasm.com/wp-content/upload/2018/06/anime_sucking_dick-7026.gif")
-   message.channel.send({embed});
-	}
-});
-
 ////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
 
 client.on('message', message => {
