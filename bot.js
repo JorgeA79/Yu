@@ -32,7 +32,7 @@ var triviadb = [
 		"Where does JELLY live?",
 		"Where did PIXEL meet NIA?"
 	];
-
+////////////////////////////////////////////////TRIVIA//////////////////////////////////////
 var trivianswersdb = [
 	        "PEANUT BUTTER",
 	        "AMMY",
@@ -75,6 +75,11 @@ var answers =
 			"My sources say no",
 			"Outlook not so good",
 			"Very doubtful"];
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////GIFS////////////////////////////////////////////////////////
+
 var hugifs =  [
 	 "https://media.tenor.com/images/b6d0903e0d54e05bb993f2eb78b39778/tenor.gif",
  	 "https://i.pinimg.com/originals/85/dc/ef/85dcef131af84b515106955e142df54e.gif",
@@ -85,6 +90,39 @@ var slapgifs =  [
 	 "https://media1.tenor.com/images/b6d8a83eb652a30b95e87cf96a21e007/tenor.gif?itemid=10426943",
  	 "https://media.giphy.com/media/Zau0yrl17uzdK/giphy.gif",
  	 "https://i.pinimg.com/originals/4e/9e/a1/4e9ea150354ad3159339b202cbc6cad9.gif"];
+
+var kissgifs =  [
+	 "",
+ 	 "",
+ 	 "",
+ 	 ""];
+
+var Shotgif =  [
+	 "",
+ 	 "",
+ 	 "",
+ 	 ""];
+
+var protectgifs =  [
+	 "",
+ 	 "",
+ 	 "",
+ 	 ""];
+
+var wavegifs =  [
+	 "",
+ 	 "",
+ 	 "",
+ 	 ""];
+
+var dancegifs =  [
+	 "",
+ 	 "",
+ 	 "",
+ 	 ""];
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 client.on('guildMemberAdd', member => {
@@ -99,7 +137,7 @@ client.on('message', message => {
 	}
 });
 
-
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
 client.on('message', message => {
 	if (message.author === client.user) return;
 	 if(message.channel.type === 'dm') return;
@@ -119,6 +157,8 @@ client.on('message', message => {
 	}
 });
 
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
 client.on('message', message => {
 	if (message.author === client.user) return;
 	 if(message.channel.type === 'dm') return;
@@ -137,6 +177,28 @@ client.on('message', message => {
    message.channel.send({embed});
 	}
 });
+
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'blowjob')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap = slapgifs[Math.floor(Math.random() * slapgifs.length)];
+		  message.channel.send(`**${message.author.username}** sucked **${member.user.username}'s ** Dick`);
+		const embed = new Discord.RichEmbed()
+
+  .setImage("https://xxgasm.com/wp-content/upload/2018/06/anime_sucking_dick-7026.gif")
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
 
 client.on('message', message => {
 	if (message.author === client.user) return;
