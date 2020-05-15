@@ -275,7 +275,7 @@ client.on('message', message => {
 	 var ansselx = trivianswersdb[selectkilldb]
         
 		 
-	message.channel.send(qselx + '\`30 seconds to answer, make sure to write all with CAPS\`')
+	message.channel.send(qselx + '\`15 seconds to answer, make sure to write all with CAPS\`')
 .then(() => {
 		
   message.channel.awaitMessages(response => response.content === ansselx, {
