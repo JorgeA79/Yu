@@ -292,7 +292,7 @@ client.on('message', message => {
     "\`help\`,\`ping\`,\`server\`")
 
   .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`")
-.addField("Roleplay Commands", "\`hug\`,\`slap\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,")
   message.channel.send({embed});
 
 		
