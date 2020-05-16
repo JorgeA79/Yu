@@ -303,12 +303,14 @@ client.on('message', message => {
 client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'say')) {
-		
-		 var message = message.content();
+		const args = message.content.slice(prefix.length).split(' ');
+		if (!args.length) {
+		return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+	}
 		
 	const embed = new Discord.RichEmbed()
    .setColor(0xC76CF5)
-  .setDescription(message)
+  .setDescription("${args}")
   message.channel.send({embed});
 
 		
