@@ -127,7 +127,7 @@ var wavegifs =  [
 
 
 client.on('guildMemberAdd', member => {
-    member.guild.channels.get('694781619306889266').send('WELCOME TO THE SERVER!! **' + member.user.username + '**,  Go introduce yourself in <#696322478922006588>! If you want, you can go to <#709716878263845218> and to join a club, go to <#709718943660769310>'); 
+    member.guild.channels.get('694781619306889266').send('WELCOME TO THE SERVER!! **' + member.user.username + '**,  Go introduce yourself in <#696322478922006588>! If you want, you can go to <#709716878263845218> and to join a club, go to <#709718943660769310>, You can also get your own roles in <#710829476971544596>!"'); 
 });
  
 client.on('message', message => {
