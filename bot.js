@@ -304,6 +304,7 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'say')) {
 		const args = message.content.slice(prefix.length).split(' ');
+		 args = args.split(',').map(elem => elem.trim());
 		if (!args.length) {
 		return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
 	}
