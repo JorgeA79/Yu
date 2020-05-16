@@ -1,19 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
 const fs = require("fs");
+const pg = require("pg");
+
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 
 
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-client.connect();
 
 
 
