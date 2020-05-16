@@ -285,7 +285,7 @@ client.on('message', message => {
 		
   	let member = message.mentions.members.first();
 		 if(!member)	 
-			return message.channel.send(`**${message.author.username}** started dancing alone`);
+			return message.channel.send(`**${message.author.username}** started dancing alone...`);
 			
 		  message.channel.send(`**${message.author.username}** dances with **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
