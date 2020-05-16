@@ -277,6 +277,32 @@ client.on('message', message => {
 
 ////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
 
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'dance')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) {
+		return;
+			 message.channel.send(`**${message.author.username}** started dancing alone`);
+			const embed2 = new Discord.RichEmbed()
+   .setColor(0xC76CF5)
+  .setImage("https://media.giphy.com/media/HZboJ5Pkti9k4/giphy.gif")
+   message.channel.send({embed2}); 
+		 }
+		  message.channel.send(`**${message.author.username}** dances with **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+   .setColor(0xC76CF5)
+  .setImage("https://cdn.lowgif.com/full/0e7bb3437e9b4f2a-are-na-anime-dance-gif-7-gif.gif")
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+
 
 client.on('message', message => {
 	if (message.author === client.user) return;
