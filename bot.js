@@ -592,5 +592,30 @@ client.on("message", message => {
 
 });
 
+
+client.on("message", (message) => {
+if (message.author.bot) return;
+   
+pool.query(`SELECT xp, level FROM xp WHERE userid = '${message.author.id}'`, {useArray: true}, (err, rows) => {
+const curlvl = Math.floor(0.1 * Math.sqrt(rows.xp + 0.1));
+const xpgen = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
+if(err) throw err;
+    let sql;
+if (rows.length < 1){
+    sql = `INSERT INTO xp(userid, xp, level) VALUES('${message.author.id}', 0, 0)`
+} else {
+    let xp = rows.xp;
+    sql = `UPDATE xp SET xp = ${xp + xpgen} WHERE userid = '${message.author.id}'`
+ }
+ pool.query(sql, console.log);
+ pool.end(err => {
+  if(err) throw err; 
+  console.log('Not logged to PostgresSQL');
+});
+});
+});
+
+
+
 client.login(process.env.BOT_TOKEN);
 
