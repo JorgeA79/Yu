@@ -518,43 +518,6 @@ client.on('message', message => {
 
 ////////////////////////////////Music
 
-	client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'profile')) {
-
-		var username = message.author.username
-		var avatar = message.author.avatarURL
-		const embed = new Discord.RichEmbed()
-
-  .setAuthor(username, avatar)
-  .setColor(0x7AFFA8)
-  
-  .setThumbnail(avatar)
-
-
-
-  .addField(":star:Levels", levels + " (" + experience + " xp/ " + levelsequ + " xp for level " + nextlevel + ")", true)
-
-  .addField(":dollar:Credits", "$" + balance , true)
-
-  .addField(":yellow_heart:Reputation",
-    reputation)		
-  message.channel.send({embed});
-		
-		 
-	}
-		
-});
-
-
-
-
-
-
-
-
-
-
 
 
 
