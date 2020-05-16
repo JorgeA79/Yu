@@ -92,34 +92,27 @@ var slapgifs =  [
  	 "https://i.pinimg.com/originals/4e/9e/a1/4e9ea150354ad3159339b202cbc6cad9.gif"];
 
 var kissgifs =  [
-	 "",
- 	 "",
- 	 "",
- 	 ""];
+	 "https://media1.tenor.com/images/ef4a0bcb6e42189dc12ee55e0d479c54/tenor.gif?itemid=12143127",
+ 	 "https://i.pinimg.com/originals/32/d4/f0/32d4f0642ebb373e3eb072b2b91e6064.gif",
+ 	 "https://media.tenor.com/images/de18124ebe36764446ee2dbf54a672bf/tenor.gif",
+ 	 "https://lifeo.ru/wp-content/uploads/gif-anime-kisses-26.gif"];
 
 var Shotgif =  [
-	 "",
- 	 "",
- 	 "",
- 	 ""];
+	 "https://media1.tenor.com/images/cfb7817a23645120d4baba2dcb9205e0/tenor.gif?itemid=5710495",
+ 	 "https://media1.tenor.com/images/a2df704431ed61fdddc4eb1a06bb728e/tenor.gif?itemid=5359419",
+ 	 "https://i.pinimg.com/originals/a0/f0/c3/a0f0c3dacfa0962425f34e011d30e9be.gif",
+ 	 "https://media1.tenor.com/images/63c0c6b632dfffd790b60a87007f1bfd/tenor.gif?itemid=11514589"];
 
 var protectgifs =  [
-	 "",
- 	 "",
- 	 "",
- 	 ""];
+	 "https://i.gifer.com/3cA2.gif",
+ 	 "https://memestatic.fjcdn.com/gifs/Protect+the+cinnamon+roll_7619b3_6456881.gif"];
 
 var wavegifs =  [
-	 "",
- 	 "",
- 	 "",
- 	 ""];
+	 "https://media.tenor.com/images/6870fd2f3f7be6bc6f08083a899c4889/tenor.gif",
+ 	 "https://media.giphy.com/media/VUC9YdLSnKuJy/giphy.gif",
+ 	 "https://vignette.wikia.nocookie.net/project-pokemon/images/a/a5/Wave_by_monnick-d7i06j2.gif/revision/latest?cb=20170428155931",
+ 	 "https://media.tenor.com/images/4b9b18c7aae49b108354a22a0cb615fc/tenor.gif"];
 
-var dancegifs =  [
-	 "",
- 	 "",
- 	 "",
- 	 ""];
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,6 +172,111 @@ client.on('message', message => {
 });
 
 ////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'kiss')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap1 = kissgifs[Math.floor(Math.random() * kissgifs.length)];
+		  message.channel.send(`**${message.author.username}** kissed **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+
+  .setImage(selectSlap1)
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'shoot')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap2 = Shotgif [Math.floor(Math.random() * Shotgif.length)];
+		  message.channel.send(`**${message.author.username}** shot **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+
+  .setImage(selectSlap2)
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'protect')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap3 = protectgifs[Math.floor(Math.random() * protectgifs.length)];
+		  message.channel.send(`**${message.author.username}** protected **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+
+  .setImage(selectSlap3)
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'wave')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap4 = wavegifs[Math.floor(Math.random() * wavegifs.length)];
+		  message.channel.send(`**${message.author.username}** waved at **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+
+  .setImage(selectSlap4)
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'date')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		  message.channel.send(`**${message.author.username}** dated **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+
+  .setImage("https://media1.tenor.com/images/e0f8ceace2d85bcdc36fe6d74f649b9f/tenor.gif?itemid=13300869")
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
 
 client.on('message', message => {
 	if (message.author === client.user) return;
