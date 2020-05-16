@@ -12,6 +12,12 @@ client.on('ready',() => {
  	  
 });
 
+var levels = "0"
+var levelsequ = "0"
+var nextlevel = "0"
+var balance = "0"
+var reputation = "0"
+var experience = "0"
 var prefix = "p!"; 
 var triviadb = [
 	        "What does NIA love?",
@@ -519,7 +525,33 @@ client.on('message', message => {
 ////////////////////////////////Music
 
 
+	client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'profile')) {
 
+		var username = message.author.username
+		var avatar = message.author.avatarURL
+		const embed = new Discord.RichEmbed()
+
+  .setAuthor(username, avatar)
+  .setColor(0x7AFFA8)
+  
+  .setThumbnail(avatar)
+
+
+
+  .addField(":star:Levels", levels + " (" + experience + " xp/ " + levelsequ + " xp for level " + nextlevel + ")", true)
+
+  .addField(":dollar:Credits", "$" + balance , true)
+
+  .addField(":yellow_heart:Reputation",
+    reputation)		
+  message.channel.send({embed});
+		
+		 
+	}
+		
+});
 
 
 
