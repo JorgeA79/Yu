@@ -303,7 +303,7 @@ var say = "say";
 client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + say)) {
-		const args = message.content.slice(prefix.length).split(`,`).map(elem => elem.trim());
+		const args = message.content.slice(prefix.length).split(`‎`);
 		args.shift();
 		message.delete(1000);
 		if (!args.length) {
