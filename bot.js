@@ -5,9 +5,7 @@ const pg = require("pg");
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 
-const database = new pg({
-  connectionString: process.env.DATABASE_URL,	
-})
+const database = new pg()
 
 
 
