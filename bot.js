@@ -1,16 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
 const fs = require("fs");
-const { pg } = require("pg");
+const pg = require('pg')
+const pool = new pg.Pool()
+console.log(pool)
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 var conString = process.env.BOT_TOKEN;
     
-const database = new pg({
-connectionString : conString	
-})
-
-database.connect();
 
 client.on('ready',() => {
 	
