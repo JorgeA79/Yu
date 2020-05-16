@@ -304,7 +304,7 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'say')) {
 		
-		 var message = message.content.toString();
+		 var message = message.content();
 		
 	const embed = new Discord.RichEmbed()
    .setColor(0xC76CF5)
