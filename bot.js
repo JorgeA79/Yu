@@ -310,7 +310,7 @@ client.on('message', message => {
 		
 	const embed = new Discord.RichEmbed()
    .setColor(0xC76CF5)
-  .setDescription("${args}")
+  .setDescription(`${args}`)
   message.channel.send({embed});
 
 		
