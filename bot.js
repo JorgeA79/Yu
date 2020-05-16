@@ -10,6 +10,9 @@ connectionString : process.env.DATABASE_URL,
 })
 console.log(pool)
 
+pool.connect();
+
+
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 
     
