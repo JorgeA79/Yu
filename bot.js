@@ -291,7 +291,7 @@ client.on('message', message => {
   .addField("Main Commands",
     "\`help\`,\`ping\`,\`server\`")
 
-  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,"\`say\`")
+  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
 .addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`")
   message.channel.send({embed});
 
