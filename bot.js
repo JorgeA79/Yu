@@ -2,11 +2,16 @@ const Discord = require('discord.js');
 const client = new Discord.Client();		    
 const fs = require("fs");
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
+const { PG } = require('pg');
 
- //youtubeKey: 'AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc'
+const pgclient = new PG({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
-
-
+pgclient.connect();
 
 client.on('ready',() => {
 	
