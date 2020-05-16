@@ -302,6 +302,22 @@ client.on('message', message => {
 
 client.on('message', message => {
 	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'say')) {
+		
+		 var message = message.content.toString();
+		
+	const embed = new Discord.RichEmbed()
+   .setColor(0xC76CF5)
+  .setDescription(message)
+  message.channel.send({embed});
+
+		
+	}
+});
+
+
+client.on('message', message => {
+	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + '8ball')) {
 	var r8ballAnswer = answers[Math.floor(Math.random() * answers.length)];
 		message.channel.send(r8ballAnswer);
