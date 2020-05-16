@@ -284,13 +284,9 @@ client.on('message', message => {
 		
 		
   	let member = message.mentions.members.first();
-		 if(!member) {
-			 message.channel.send(`**${message.author.username}** started dancing alone`);
-			const embed2 = new Discord.RichEmbed()
-   .setColor(0xC76CF5)
-  .setImage("https://media.giphy.com/media/HZboJ5Pkti9k4/giphy.gif")
-   message.channel.send({embed2}); 
-		 }
+		 if(!member)	 
+			return message.channel.send(`**${message.author.username}** started dancing alone`);
+			
 		  message.channel.send(`**${message.author.username}** dances with **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
    .setColor(0xC76CF5)
