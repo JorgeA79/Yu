@@ -285,7 +285,6 @@ client.on('message', message => {
 		
   	let member = message.mentions.members.first();
 		 if(!member) {
-		return;
 			 message.channel.send(`**${message.author.username}** started dancing alone`);
 			const embed2 = new Discord.RichEmbed()
    .setColor(0xC76CF5)
