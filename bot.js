@@ -144,7 +144,7 @@ client.on('message', message => {
 		var selecthugGif = hugifs[Math.floor(Math.random() * hugifs.length)];
 		  message.channel.send(`**${message.author.username}** hugged **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage(selecthugGif)
    message.channel.send({embed});
 	}
@@ -165,7 +165,7 @@ client.on('message', message => {
 		var selectSlap = slapgifs[Math.floor(Math.random() * slapgifs.length)];
 		  message.channel.send(`**${message.author.username}** slapped **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage(selectSlap)
    message.channel.send({embed});
 	}
@@ -186,7 +186,7 @@ client.on('message', message => {
 		var selectSlap1 = kissgifs[Math.floor(Math.random() * kissgifs.length)];
 		  message.channel.send(`**${message.author.username}** kissed **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage(selectSlap1)
    message.channel.send({embed});
 	}
@@ -207,7 +207,7 @@ client.on('message', message => {
 		var selectSlap2 = Shotgif [Math.floor(Math.random() * Shotgif.length)];
 		  message.channel.send(`**${message.author.username}** shot **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage(selectSlap2)
    message.channel.send({embed});
 	}
@@ -228,7 +228,7 @@ client.on('message', message => {
 		var selectSlap3 = protectgifs[Math.floor(Math.random() * protectgifs.length)];
 		  message.channel.send(`**${message.author.username}** protected **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage(selectSlap3)
    message.channel.send({embed});
 	}
@@ -249,7 +249,7 @@ client.on('message', message => {
 		var selectSlap4 = wavegifs[Math.floor(Math.random() * wavegifs.length)];
 		  message.channel.send(`**${message.author.username}** waved at **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage(selectSlap4)
    message.channel.send({embed});
 	}
@@ -269,7 +269,7 @@ client.on('message', message => {
 		
 		  message.channel.send(`**${message.author.username}** dated **${member.user.username}**`);
 		const embed = new Discord.RichEmbed()
-
+   .setColor(0xC76CF5)
   .setImage("https://media1.tenor.com/images/e0f8ceace2d85bcdc36fe6d74f649b9f/tenor.gif?itemid=13300869")
    message.channel.send({embed});
 	}
