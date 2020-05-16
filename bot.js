@@ -596,7 +596,9 @@ client.on("message", message => {
 client.on("message", (message) => {
 if (message.author.bot) return;
    
-pool.query(`SELECT xp, level FROM xp WHERE userid = '${message.author.id}'`, {useArray: true}, (err, rows) => {
+pool.query(`SELECT * FROM xp WHERE userid = '${message.author.id}'`,(err, result) => {
+if (!result.rows[0]){{
+	
 const curlvl = Math.floor(0.1 * Math.sqrt(rows.xp + 0.1));
 const xpgen = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
 if(err) throw err;
