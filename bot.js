@@ -298,6 +298,28 @@ client.on('message', message => {
 ////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
 
 
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'sing')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member)	 
+			return message.channel.send(`**${message.author.username}** started singing alone...`);
+			
+		  message.channel.send(`**${message.author.username}** sings for **${member.user.username}**`);
+		const embed = new Discord.RichEmbed()
+   .setColor(0xC76CF5)
+  .setImage("https://i.pinimg.com/originals/47/9c/8a/479c8a26eaa887287b6a3275a5a0cdbb.gif")
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+
+
 
 client.on('message', message => {
 	if (message.author === client.user) return;
@@ -313,7 +335,7 @@ client.on('message', message => {
     "\`help\`,\`ping\`,\`server\`")
 
   .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
-.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`")
   message.channel.send({embed});
 
 		
