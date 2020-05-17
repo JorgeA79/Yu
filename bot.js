@@ -714,7 +714,7 @@ client.on('message', message => {
 	if (message.content.startsWith(prefix + 'add points')) {
 	
 		 let sql;
- 		sql = `INSERT INTO xp (id, xp) VALUES ('${message.author.id}', 100)`;
+ 		sql = `INSERT INTO xp (id) VALUES ('${message.author.id}')`;
 		pool.query(sql);
 		
 		
