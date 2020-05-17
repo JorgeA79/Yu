@@ -533,7 +533,37 @@ client.on('message', message => {
 });
 /////////////////////////////////////////////////JAPAN/////////////////////////////////////////////////////////////////
 
+	client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'profile ammy')) {
 
+		client.users.fetch('206606985167110145').then(myUser => {
+    		console.log(myUser.avatarURL()); // My user's avatar is here!
+		});
+		
+		var username = message.author.username
+		var avatar = message.author.avatarURL
+		const embed = new Discord.RichEmbed()
+
+  .setAuthor(username, avatar)
+  .setColor(0x7AFFA8)
+  
+  .setThumbnail(avatar)
+
+
+
+  .addField(":star:Levels", levels + " (" + experience + " xp/ " + levelsequ + " xp for level " + nextlevel + ")", true)
+
+  .addField(":dollar:Credits", "$" + balance , true)
+
+  .addField(":yellow_heart:Reputation",
+    reputation)		
+  message.channel.send({embed});
+		
+		 
+	}
+		
+});
 
 
 
