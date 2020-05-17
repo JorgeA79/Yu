@@ -575,11 +575,11 @@ client.on('message', message => {
   .setThumbnail(avatar)
 
  .addField("Name:",
-    "\`OwO\`")
+    "\`Pixel\`")
 
-  .addField("Birthday:", "\`Feb. 9\`")
-.addField("Likes:", "\`Everything uwu`")
-.addField("Dislikes:", "\`Everything owo`")
+  .addField("Birthday:", "\` May 14\`")
+.addField("Likes:", "\`Maryll\`,\`Milktea\`,\`Yaoi\`,\`Manga\`,\`Romance anime\`")
+.addField("Dislikes:", "\`Dry people\`,\`Rude People\`,\`Toxic People\`")
   message.channel.send({embed});
 		
 		 
