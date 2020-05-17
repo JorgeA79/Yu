@@ -16,10 +16,7 @@ connectionString : process.env.DATABASE_URL,
 })
 
 
-pool.connect(err => {
-  if(err) throw err; 
-  console.log('Connected to PostgresSQL');
-})
+pool.connect();
 
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
