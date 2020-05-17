@@ -547,14 +547,12 @@ client.on('message', message => {
   
   .setThumbnail(avatar)
 
+ .addField("Name:",
+    "\`Jesi\`")
 
-
-  .addField(":star:Levels", levels + " (" + experience + " xp/ " + levelsequ + " xp for level " + nextlevel + ")", true)
-
-  .addField(":dollar:Credits", "$" + balance , true)
-
-  .addField(":yellow_heart:Reputation",
-    reputation)		
+  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`")
+.addField("Japan Commands", "\`profile\`,\`ammy\`,\`pixel\`,\`nia\`,\`jelly\`,\`aldrin\`,\`chuuni\`")
   message.channel.send({embed});
 		
 		 
