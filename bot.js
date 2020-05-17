@@ -625,7 +625,7 @@ client.on('message', message => {
 
   .setAuthor(username, avatar)
   .setColor(0x7AFFA8)
-  .setDescription("Do not let your weaknesses control over your life!")
+  .setDescription("IDK!")
   .setThumbnail(avatar)
 
  .addField("Name:",
