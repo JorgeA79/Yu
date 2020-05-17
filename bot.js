@@ -551,7 +551,7 @@ client.on('message', message => {
     "\`Jesi\`")
 
   .addField("Birthday:", "\` May 14\`")
-.addField("Likes:, "\`Joshua\`,\`Honkai Impact\`,\`Mystery Anime\`")
+.addField("Likes:", "\`Joshua\`,\`Honkai Impact\`,\`Mystery Anime\`")
 .addField("Dislikes:", "\`Noises\`,\`Drama\`,\`Coding\`")
   message.channel.send({embed});
 		
