@@ -587,7 +587,32 @@ client.on('message', message => {
 		
 });
 
+	client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'profile nia')) {
 
+		
+		var username = 'RiiDaPeanut'
+		var avatar = 'https://cdn.discordapp.com/avatars/306367704934252546/b827cdbc2be0ad4b5d4fb496b72ab080.png?size=256'
+		const embed = new Discord.RichEmbed()
+
+  .setAuthor(username, avatar)
+  .setColor(0x7AFFA8)
+  .setDescription("Don't procrastinate the inevitable.")
+  .setThumbnail(avatar)
+
+ .addField("Name:",
+    "\`Riiuz\`")
+
+  .addField("Birthday:", "\` June 30th\`")
+.addField("Likes:", "\`Food\`,\`Anime\`,\`Singing\`,\`Journaling\`")
+.addField("Dislikes:", "\`Drama\`,\`Fake Friends\`,\`Crowded Place\`")
+  message.channel.send({embed});
+		
+		 
+	}
+		
+});
 /////////////////////////////////////////////////LEVELS/////////////////////////////////////////////////////////////////
 
 
