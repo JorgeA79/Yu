@@ -537,8 +537,9 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'profile ammy')) {
 
-		client.users.fetch('206606985167110145').then(myUser => {
-    		console.log(myUser.avatarURL()); // My user's avatar is here!
+	
+		bot.fetchUser('206606985167110145').then(myUser => {
+  	 	console.log(myUser.avatarURL); // My user's avatar is here!
 		});
 		
 		var username = message.author.username
