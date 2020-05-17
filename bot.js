@@ -598,13 +598,13 @@ client.on('message', message => {
 
   .setAuthor(username, avatar)
   .setColor(0x7AFFA8)
-  .setDescription("Don't procrastinate the inevitable.")
+  .setDescription("Do not let your weaknesses control over your life!")
   .setThumbnail(avatar)
 
  .addField("Name:",
     "\`Riiuz\`")
 
-  .addField("Birthday:", "\` June 30th\`")
+  .addField("Birthday:", "\`June 30th\`")
 .addField("Likes:", "\`Food\`,\`Anime\`,\`Singing\`,\`Journaling\`")
 .addField("Dislikes:", "\`Drama\`,\`Fake Friends\`,\`Crowded Place\`")
   message.channel.send({embed});
