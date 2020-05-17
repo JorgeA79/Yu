@@ -613,6 +613,34 @@ client.on('message', message => {
 	}
 		
 });
+
+	client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'profile jelly')) {
+
+		
+		var username = 'Jelly090720'
+		var avatar = 'https://cdn.discordapp.com/avatars/303767514876477443/97179284ba14fb3bc531fc0e828ee23c.png?size=256'
+		const embed = new Discord.RichEmbed()
+
+  .setAuthor(username, avatar)
+  .setColor(0x7AFFA8)
+  .setDescription("Do not let your weaknesses control over your life!")
+  .setThumbnail(avatar)
+
+ .addField("Name:",
+    "\`Jelly\`")
+
+  .addField("Birthday:", "\`7th Sept\`")
+.addField("Likes:", "\`Pink\`,\`Pastel Colours\`,\`Cute Stuff\`,\`Black & White\`")
+.addField("Dislikes:", "\`She doesn't know\`")
+  message.channel.send({embed});
+		
+		 
+	}
+		
+});
+
 /////////////////////////////////////////////////LEVELS/////////////////////////////////////////////////////////////////
 
 
