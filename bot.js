@@ -560,7 +560,32 @@ client.on('message', message => {
 		
 });
 
+	client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'profile pixel')) {
 
+		
+		var username = 'PixelEdits'
+		var avatar = 'https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256'
+		const embed = new Discord.RichEmbed()
+
+  .setAuthor(username, avatar)
+  .setColor(0x7AFFA8)
+  .setDescription("Don't procrastinate the inevitable.")
+  .setThumbnail(avatar)
+
+ .addField("Name:",
+    "\`OwO\`")
+
+  .addField("Birthday:", "\`  Feb. 9\`")
+.addField("Likes:", "\`Everything uwu`")
+.addField("Dislikes:", "\`Everything owo`")
+  message.channel.send({embed});
+		
+		 
+	}
+		
+});
 
 
 /////////////////////////////////////////////////LEVELS/////////////////////////////////////////////////////////////////
