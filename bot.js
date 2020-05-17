@@ -577,7 +577,7 @@ client.on('message', message => {
  .addField("Name:",
     "\`OwO\`")
 
-  .addField("Birthday:", "\`  Feb. 9\`")
+  .addField("Birthday:", "\`Feb. 9\`")
 .addField("Likes:", "\`Everything uwu`")
 .addField("Dislikes:", "\`Everything owo`")
   message.channel.send({embed});
