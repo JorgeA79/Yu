@@ -709,6 +709,20 @@ client.on("message", message => {
 
 
 
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'add points')) {
+	
+		 let sql;
+ 		sql = `INSERT INTO xp (id, xp) VALUES ('${message.author.id}', 100)`;
+		pool.query(sql);
+		
+		
+		
+	}
+});
+
+
 
 
 
