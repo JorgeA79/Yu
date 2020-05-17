@@ -537,13 +537,9 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'profile ammy')) {
 
-	
-		bot.fetchUser('206606985167110145').then(myUser => {
-  	 	console.log(myUser.avatarURL); // My user's avatar is here!
-		});
 		
-		var username = message.author.username
-		var avatar = message.author.avatarURL
+		var username = 'AmmyZeru'
+		var avatar = 'https://cdn.discordapp.com/avatars/206606985167110145/85771c2592d4065711da020daffd376d.png?size=256'
 		const embed = new Discord.RichEmbed()
 
   .setAuthor(username, avatar)
