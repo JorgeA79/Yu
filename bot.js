@@ -137,7 +137,11 @@ var wavegifs =  [
  	 "https://vignette.wikia.nocookie.net/project-pokemon/images/a/a5/Wave_by_monnick-d7i06j2.gif/revision/latest?cb=20170428155931",
  	 "https://media.tenor.com/images/4b9b18c7aae49b108354a22a0cb615fc/tenor.gif"];
 
-
+var patgifs =  [
+	 "https://media.tenor.com/images/ad8357e58d35c1d63b570ab7e587f212/tenor.gif",
+ 	 "https://i.imgur.com/4ssddEQ.gif",
+ 	 "https://thumbs.gfycat.com/FlimsyDeafeningGrassspider-size_restricted.gif",
+ 	 "https://66.media.tumblr.com/a72dd82535f3e7accd827c202dacc09a/tumblr_pfyiqz0pFL1th206io1_640.gif"];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -254,6 +258,27 @@ client.on('message', message => {
 		const embed = new Discord.RichEmbed()
    .setColor(0xC76CF5)
   .setImage(selectSlap3)
+   message.channel.send({embed});
+	}
+});
+
+////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'pat')) {
+		
+		
+  	let member = message.mentions.members.first();
+		 if(!member) 
+		return message.reply("Try mentioning the person");	
+		
+		var selectSlap4 = patgifs[Math.floor(Math.random() * patgifs.length)];
+		  message.channel.send(`**${member.user.username}** is getting a headpat from **${message.author.username}**`);
+		const embed = new Discord.RichEmbed()
+   .setColor(0xC76CF5)
+  .setImage(selectSlap4)
    message.channel.send({embed});
 	}
 });
