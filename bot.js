@@ -18,6 +18,7 @@ connectionString : process.env.DATABASE_URL,
 
 pool.connect();
 
+ pool.query('SHOW TABLES', console.log);
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 
