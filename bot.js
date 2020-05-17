@@ -384,7 +384,7 @@ client.on('message', message => {
     "\`help\`,\`ping\`,\`server\`")
 
   .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
-.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`,\`pat\`")
 .addField("Japan Commands", "\`profile\`,\`ammy\`,\`pixel\`,\`nia\`,\`jelly\`,\`aldrin\`,\`chuuni\`")
   message.channel.send({embed});
 
