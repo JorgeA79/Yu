@@ -6,11 +6,20 @@ const fs = require("fs");
 
 const pg = require('pg')
 const pool = new pg.Pool({
-connectionString : process.env.DATABASE_URL,	
+connectionString : process.env.DATABASE_URL,
+	port: 5432,
+        host: process.env.dbhost,
+        database: process.env.db,
+        user: process.env.user,
+       password: process.env.password,
+        ssl: true,
 })
-console.log(pool)
 
-pool.connect();
+
+pool.connect(err => {
+  if(err) throw err; 
+  console.log('Connected to PostgresSQL');
+})
 
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
