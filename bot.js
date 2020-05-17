@@ -544,15 +544,15 @@ client.on('message', message => {
 
   .setAuthor(username, avatar)
   .setColor(0x7AFFA8)
-  
+  .setDescription("“I will not be ruled. I make my own rules. That is the mindset of a ruler.”")
   .setThumbnail(avatar)
 
  .addField("Name:",
     "\`Jesi\`")
 
-  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
-.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`")
-.addField("Japan Commands", "\`profile\`,\`ammy\`,\`pixel\`,\`nia\`,\`jelly\`,\`aldrin\`,\`chuuni\`")
+  .addField("Birthday:", "\` May 14\`")
+.addField("Likes:, "\`Joshua\`,\`Honkai Impact\`,\`Mystery Anime\`")
+.addField("Dislikes:", "\`Noises\`,\`Drama\`,\`Coding\`")
   message.channel.send({embed});
 		
 		 
