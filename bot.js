@@ -544,7 +544,7 @@ client.on('message', message => {
 
   .setAuthor(username, avatar)
   .setColor(0x7AFFA8)
-  .setDescription("“I will not be ruled. I make my own rules. That is the mindset of a ruler.”")
+  .setDescription("I will not be ruled. I make my own rules. That is the mindset of a ruler.")
   .setThumbnail(avatar)
 
  .addField("Name:",
