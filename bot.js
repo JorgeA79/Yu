@@ -18,12 +18,14 @@ connectionString : process.env.DATABASE_URL,
 
 pool.connect();
 
-pool.query('SELECT xp,id FROM xp.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
+pool.query("SELECT xp,id FROM xp", (err, res) => {
+  if (err) {
+    console.log("pg returned an error");
+    throw error;
   }
-  pool.end();
+  if (res) {
+    console.log("pg returned a result from the SQL query");
+  }
 });
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
