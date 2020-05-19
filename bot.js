@@ -16,7 +16,10 @@ connectionString : process.env.DATABASE_URL,
 })
 
 
-pool.connect();
+pool.connect(err =>{
+	if(err) throw  err;
+	console.log("Conected to database");
+});
 
  pool.query('SHOW TABLES', console.log);
 
