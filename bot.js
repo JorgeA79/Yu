@@ -16,8 +16,8 @@ connectionString : process.env.DATABASE_URL,
 })
 
 
-pool.connect(err =>{
-	if(err) throw  err;
+pool.connect(err => {
+	if(err) throw err;
 	console.log("Conected to database");
 });
 
