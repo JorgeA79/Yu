@@ -21,7 +21,6 @@ pool.connect();
 pool.query("SELECT xp,id FROM xp", (err, res) => {
   if (err) {
     console.log("pg returned an error");
-    throw error;
   }
   if (res) {
     console.log("pg returned a result from the SQL query");
