@@ -738,12 +738,7 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'add points')) {
 	
-		  var sql = "INSERT INTO xp (id, xp) VALUES ('owo', '32')";
-  pool.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-		
+		  	
 		
 		
 	}
