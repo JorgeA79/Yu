@@ -16,12 +16,15 @@ connectionString : process.env.DATABASE_URL,
 })
 
 
-pool.connect(err => {
-	if(err) throw err;
-	console.log("Conected to database");
-});
+pool.connect();
 
- pool.query('SHOW TABLES', console.log);
+pool.query('SELECT xp,id FROM xp.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  pool.end();
+});
 
 let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 
