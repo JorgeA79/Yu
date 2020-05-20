@@ -832,8 +832,10 @@ client.on('message', message => {
                 i++;
                 return i + ") " + result.link;
             	});
+		
+		let selected = youtubeResults[0];	
 			
-  		console.dir(links);	
+  		console.log(selected.link);	
 		
 	});
 	}
