@@ -823,6 +823,12 @@ client.on('message', message => {
 		  const args = message.content.slice(prefix.length).split(` `);
 		  var argsowo = args.splice(1).join(" ");
 		message.channel.sendMessage(argsowo);
+		
+		search(argsowo, opts, function(err, results) {
+  		if(err) return console.log(err);
+ 
+  		console.dir(results);
+});
 	}
 	});
 
