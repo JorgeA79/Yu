@@ -789,14 +789,14 @@ client.on('message', message => {
  			 const videos = r.videos
 			 const video = videos[ 0 ].url;
  			console.log( videos[ 0 ].url )
-			message.channel.sendMessage(videos[ 0 ].url);
+			
 			  
 			  const channel = message.member.voiceChannel;
     	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    	message.channel.sendMessage(`${video}`);
+
 		
 	let stream = ytdl("https://www.youtube.com/watch?v=VcyFfcJbyeM", {
             filter: "audioonly",
@@ -835,32 +835,6 @@ client.on('message', message => {
 	});
 
 
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'search')) {
-		const args = message.content.slice(prefix.length).split(` `);
-		var argsowo = args.splice(1).join(" ");
-		const opts = {
-  		query: argsowo,
-  		// search: 'superman theme', // same as opts.query
-  		pageStart: 1, // first page result
-  		pageEnd: 1, // until page 3
-		}
-		
-		  yts( opts, function ( err, r ) {
-  			if ( err ) throw err
-
- 			 const videos = r.videos
- 			console.log( videos[ 0 ].url )
-			message.channel.sendMessage(videos[ 0 ].url);
-				} )
-		
-		
-		
-	}
-	});
 
 client.login(process.env.BOT_TOKEN);
 
