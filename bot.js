@@ -16,7 +16,7 @@ const yts = require( 'yt-search' )
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
 
 const streamOpt = { seek: 0, volume: 1};
-const queue = new Map();
+
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
@@ -773,65 +773,7 @@ client.on('message', message => {
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
-client.on('message', message => {
-	if (message.author === client.user) return;
 
-	if (message.content.startsWith(prefix + 'play')) {
-	const args = message.content.slice(prefix.length).split(` `);
-		
-	
-		
-///////////////////////////////////SEARCH//////////////////////////////////////////////	
- 
-		var argsowo = args.splice(1).join(" ");
-		const opts = {
-  		query: argsowo,
-  		// search: 'superman theme', // same as opts.query
-  		pageStart: 1, // first page result
-  		pageEnd: 1, // until page 3
-		}
-		
-		  yts( opts, function ( err, r ) {
-  		  if ( err ) throw err
-
- 			 const videos = r.videos
-			 const video = videos[ 0 ].url;
- 			console.log( videos[ 0 ].url )
-			const channel = message.member.voiceChannel;
-    	
-///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
-	var username = message.author.username
-	var avatar = videos[ 0 ].image;
-	var Title = videos[ 0 ].title;		  
-	var duration = videos[ 0 ].duration.timestamp;
-	const embed = new Discord.RichEmbed()
-	 .setTitle(Title)
-  	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
-  	.setColor(0x7AFFA8)
-  	.setDescription(`🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / ${duration}s`)
-  	.setThumbnail(avatar)
-	.setURL(video)
-  				  
-
-///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
-	
-      		if (!channel){
-   		 return message.channel.sendMessage(":x: You are not in a voice channel!!");
-       		 }
-		 message.channel.send({embed});		  
-   		 channel.join()
-     		.then(connection => {
-           	 connection.playOpusStream(ytdl(${video}), {
-                type: "opus" // type: opus is compulsory because this package returns opus stream
-            	})
-            	.on("end", () => {
-                channel.leave();
-           	 })
-      		  });
-    })
-
-    }
-    });
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
