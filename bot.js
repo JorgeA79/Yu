@@ -14,7 +14,7 @@ const pg = require('pg')
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
 
 const opts = {
-    maxResults: 5,
+    maxResults: 1,
     key: process.env.YOUTUBE_API,
     type: 'video'
 };
