@@ -845,7 +845,7 @@ client.on('message', message => {
   const videos = r.videos
   videos.forEach( function ( v ) {
     const views = String( v.views ).padStart( 1, ' ' )
-    console.log( videos[ 0 ] )
+    console.log( videos[ 0 ].url )
   	} )
 	} )
 	}
