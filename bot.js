@@ -817,30 +817,16 @@ client.on('message', message => {
 	}
 	});
 
+
+
 client.on('message', message => {
 	if (message.author === client.user) return;
 	 if(message.channel.type === 'dm') return;
 	if (message.content.startsWith(prefix + 'search')) {
-	
-		  const args = message.content.slice(prefix.length).split(` `);
-		  var argsowo = args.splice(1).join(" ");
-		message.channel.sendMessage(argsowo);
-		
-		search(argsowo, opts, function(err, results) {
-
-  		console.log(results.result);	
-		
-	});
-	}
-	});
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'searchowo')) {
-	
+		const args = message.content.slice(prefix.length).split(` `);
+		var argsowo = args.splice(1).join(" ");
 		const opts = {
-  		query: 'superman theme',
+  		query: argsowo,
   		// search: 'superman theme', // same as opts.query
   		pageStart: 1, // first page result
   		pageEnd: 1, // until page 3
