@@ -777,7 +777,7 @@ client.on('message', message => {
 		
 	channel.join()
 	 .then(connection => {
-            connection.play(stream, {
+            connection.playOpusStream(stream, {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("finish", () => {
