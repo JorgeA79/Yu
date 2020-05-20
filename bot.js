@@ -35,7 +35,13 @@ client.on('ready',() => {
 	
 	   client.user.setPresence({game: {name: "in JAPAN | p!help", type: 0}});
  	  let channelo = client.channels.get('710730014827479047');
-  		channelo.join()
+  		channelo.join().then(connection => {
+    // Yay, it worked!
+    console.log("Successfully connected.");
+  }).catch(e => {
+    // Oh no, it errored! Let's log it to console :)
+    console.error(e);
+  });
 });
 
 var levels = "0"
