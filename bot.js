@@ -829,6 +829,7 @@ client.on('message', message => {
  
   		console.dir(results);
 });
+		message.channel.sendMessage(results.link);
 	}
 	});
 
