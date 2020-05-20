@@ -838,9 +838,6 @@ client.on('message', message => {
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	channel.join()	 
-	} )
-	 
-	
 	.then(connection => {
             connection.playOpusStream(ytdl(${video}), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
@@ -848,8 +845,8 @@ client.on('message', message => {
             .on("finish", () => {
                 channel.leave();
             })
-        });
-		      
+        });		  
+	} )		      
 	}
 	});
 
