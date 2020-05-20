@@ -839,15 +839,25 @@ client.on('message', message => {
 	 if(message.channel.type === 'dm') return;
 	if (message.content.startsWith(prefix + 'searchowo')) {
 	
-		  yts( 'superman theme', function ( err, r ) {
-  	if ( err ) throw err
+		const opts = {
+  		query: 'superman theme',
+  		// search: 'superman theme', // same as opts.query
+  		pageStart: 1, // first page result
+  		pageEnd: 1, // until page 3
+		}
+		
+		  yts( opts, function ( err, r ) {
+  			if ( err ) throw err
 
-  const videos = r.videos
-  videos.forEach( function ( v ) {
-    const views = String( v.views ).padStart( 1, ' ' )
-    console.log( videos[ 0 ].url )
-  	} )
-	} )
+ 			 const videos = r.videos
+ 			 videos.forEach( function ( v ) {
+    			const views = String( v.views ).padStart( 1, ' ' )
+    			console.log( videos[ 0 ].url )
+  				} )
+				} )
+		
+		
+		
 	}
 	});
 
