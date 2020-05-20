@@ -826,8 +826,9 @@ client.on('message', message => {
 		
 		search(argsowo, opts, function(err, results) {
   		if(err) return console.log(err);
- 
-  		console.dir(results.results[1].link);
+
+  		console.dir(results);
+			message.channel.sendMessage(results.results[0].link);
 });
 	}
 	});
