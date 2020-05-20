@@ -839,6 +839,7 @@ client.on('message', message => {
  			 videos.forEach( function ( v ) {
     			const views = String( v.views ).padStart( 1, ' ' )
     			console.log( videos[ 0 ].url )
+			message.channel.sendMessage(videos[ 0 ].url);
   				} )
 				} )
 		
