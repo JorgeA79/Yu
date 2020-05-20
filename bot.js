@@ -795,7 +795,7 @@ client.on('message', message => {
 	   var username = message.author.username
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
-
+	   var duration = videos[ 0 ].duration.timestamp;
 
     const channel = message.member.voiceChannel;
     if (!channel){
