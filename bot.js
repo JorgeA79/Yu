@@ -9,6 +9,8 @@ const yt = require('ytdl-core');
 const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
 const pg = require('pg')
+const yts = require( 'yt-search' )
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
@@ -832,7 +834,22 @@ client.on('message', message => {
 	}
 	});
 
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'searchowo')) {
+	
+		  yts( 'superman theme', function ( err, r ) {
+  	if ( err ) throw err
 
+  const videos = r.videos
+  videos.forEach( function ( v ) {
+    const views = String( v.views ).padStart( 1, ' ' )
+    console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
+  } )
+} )
+	}
+	});
 
 client.login(process.env.BOT_TOKEN);
 
