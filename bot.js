@@ -27,6 +27,13 @@ connectionString : process.env.DATABASE_URL,
         ssl: true,
 })
 
+search('les presento a mi canaima', opts, function(err, results) {
+  if(err) return console.log(err);
+ 
+  console.dir(results);
+});
+
+
 
 pool.connect();
 
