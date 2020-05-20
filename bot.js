@@ -796,8 +796,21 @@ client.on('message', message => {
     	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
-	message.channel.sendMessage(":white_check_mark: **Connected!**");
+///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
+	var username = message.author.username
+	var avatar = videos[ 0 ].image;
+	var Title = videos[ 0 ].title;		  
+	
+	const embed = new Discord.RichEmbed()
+	 .setTitle(Title)
+  	.setAuthor("PixelEdits","https://cdn.discordapp.com/embed/avatars/0.png")
+  	.setColor(0x7AFFA8)
+  	.setDescription("🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 3s / 3m 6s")
+  	.setThumbnail(avatar)
+	.setURL(video)
+  	 message.channel.send({embed});				  
 
+///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 		
 	let stream = ytdl("https://www.youtube.com/watch?v=VcyFfcJbyeM", {
             filter: "audioonly",
