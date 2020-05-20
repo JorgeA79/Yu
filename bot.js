@@ -62,7 +62,6 @@ var balance = "0"
 var reputation = "0"
 var experience = "0"
 var prefix = "p!"; 
-var queue = [];
 var triviadb = [
 	        "What does NIA love?",
 	        "Who did NIA met first?",
