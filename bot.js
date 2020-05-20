@@ -826,6 +826,13 @@ client.on('message', message => {
 		
 		search(argsowo, opts, function(err, results) {
   		if(err) return console.log(err);
+		
+		var youtubeResults = results.results;
+		let links = youtubeResults.map(result => {
+                i++;
+                return i + ") " + result.link;
+            	});
+			
   		console.dir(links);	
 		
 	});
