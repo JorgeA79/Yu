@@ -826,10 +826,8 @@ client.on('message', message => {
 		
 		search(argsowo, opts, function(err, results) {
   		if(err) return console.log(err);
-  		console.dir(results);	
-		var resultowo = results.results;
-		var selectedR = resultowo[1];
-		message.channel.sendMessage(selectedR.link);
+  		console.dir(links);	
+		
 	});
 	}
 	});
