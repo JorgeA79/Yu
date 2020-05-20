@@ -16,7 +16,7 @@ const yts = require( 'yt-search' )
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
 
 const streamOpt = { seek: 0, volume: 1};
-
+const queue = new Map();
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
@@ -796,11 +796,25 @@ client.on('message', message => {
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
-	
-		  
-    const channel = message.member.voiceChannel;
-    if (!channel){
-    return message.channel.sendMessage(":x: You are not in a voice channel!!");
+	   const serverQueue = queue.get(message.guild.id)
+	if(!serverQueue){
+    	const queueConstruct = {
+    	textChannel : message.channel,
+    	voiceChannel : channel,
+    	connection : null,
+    	songs: [],
+    	volume: 5,
+
+    	}
+    	queue.set(message.guild.id, queueConstruct);
+
+    	} else {
+
+    	}	  
+    	const channel = message.member.voiceChannel;
+    
+	if (!channel){
+    	return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
        const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
