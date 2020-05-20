@@ -832,7 +832,7 @@ client.on('message', message => {
      	message.channel.send({embed});
     	channel.join()
     	.then(connection => {
-     	connection.playOpusStream(ytdl(video), {
+     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url), {
      	type: "opus" // type: opus is compulsory because this package returns opus stream
      	})
      	.on("end", () => {
