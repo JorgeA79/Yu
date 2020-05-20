@@ -524,53 +524,7 @@ client.on('message', message => {
 ///////////////////////////////////////////////////////////////////////
 
 
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'trivia')) {
 
-		var selectkilldb = [Math.floor(Math.random() * triviadb.length)];
-        var qselx = triviadb[selectkilldb]
-	 var ansselx = trivianswersdb[selectkilldb]
-        
-		 
-	message.channel.send(qselx + '\`15 seconds to answer, make sure to write all with CAPS\`')
-.then(() => {
-		
-  message.channel.awaitMessages(response => response.content === ansselx, {
-    max: 1,
-    time: 15000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-	  const embed = new Discord.RichEmbed()
-
-  .setTitle("You are right")
-
-  .setColor(0x7AFFA8)
-  .setImage("https://media1.tenor.com/images/1a3e80b2d8b08e39d3a7355dc23a88db/tenor.gif?itemid=15018586")
-
-
-  message.channel.send({embed});
-
-    })
-    .catch(() => {
-	
-	  var answersW = [
-	 	 "Aww Rip",
-		 "F",
-		 "You lose qwp"
-	  ];
-	  
-	  var selectanswerW = [Math.floor(Math.random() * answersW.length)];  
-	  var qselW = answersW[selectanswerW]
-      message.channel.send(qselW +' <:oop:694790743121985597>  ');
-  
-    });
-});
-	
-	}
-});
 /////////////////////////////////////////////////JAPAN/////////////////////////////////////////////////////////////////
 
 	client.on('message', message => {
