@@ -4,6 +4,7 @@ const fs = require("fs");
 const ffmpeg = require('ffmpeg');
 const playArbitraryFFmpeg = require('discord.js-arbitrary-ffmpeg');
 const yt = require('ytdl-core');
+const ytdl = require("discord-ytdl-core");
 
 
 const pg = require('pg')
@@ -759,13 +760,34 @@ client.on('message', message => {
 
 	if (message.content.startsWith(prefix + 'play')) {
 	
+	
 	const channel = message.member.voiceChannel;
     	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    	channel.join()
-  
+    	 let stream = ytdl("https://youtube.com/watch?v=ERu6jh_1gR0", {
+            filter: "audioonly",
+            encoderArgs: [
+                '-af',
+                'equalizer=f=40:width_type=h:width=50:g=10'
+            ] // FFmpeg args array (optional)
+        });
+		
+		
+	channel.join()
+	 .then(connection => {
+            connection.play(stream, {
+                type: "opus" // type: opus is compulsory because this package returns opus stream
+            })
+            .on("finish", () => {
+                channel.leave();
+            })
+        });	
+		
+  	
+		
+		
 	}
 	});
 
