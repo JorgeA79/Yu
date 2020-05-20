@@ -757,12 +757,12 @@ client.on('message', message => {
 
 	if (message.content.startsWith(prefix + 'play')) {
 	
-	const voiceChannel = message.member.voiceChannel;
-    	if (!voiceChannel){
+	const channel = message.member.voiceChannel;
+    	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    	voiceChannel.join()
+    	channel.join()
     
 	}
 	});
