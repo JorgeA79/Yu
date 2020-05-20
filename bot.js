@@ -797,7 +797,7 @@ client.on('message', message => {
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-	 
+	 const serverQueue = queue.get(message.guild.id);
 	 const song = {
 		title: Title,
 		url: video
