@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const fs = require("fs");
 const ffmpeg = require('ffmpeg');
 const playArbitraryFFmpeg = require('discord.js-arbitrary-ffmpeg');
-
+const yt = require('ytdl-core');
 
 
 const pg = require('pg')
@@ -765,7 +765,21 @@ client.on('message', message => {
     	}
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
     	channel.join();
-    
+     .then(connection => {
+	const args = "https://www.youtube.com/watch?v=XMXgHfHxKVM";
+	
+      let stream = yt(args, {audioonly: true});
+      yt.getInfo(args, function(err, info) {
+      const title = info.title
+	  message.channel.sendMessage(`Now playing \`${title}\``)
+      })
+      const dispatcher = connection.playStream(stream);
+      dispatcher.on('end', () => {
+         voiceChannel.leave();
+       }).catch(e =>{
+         console.error(e);
+       });
+    })	
 	}
 	});
 
