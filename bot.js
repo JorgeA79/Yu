@@ -845,9 +845,9 @@ client.on('message', message => {
   const videos = r.videos
   videos.forEach( function ( v ) {
     const views = String( v.views ).padStart( 1, ' ' )
-    console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
-  } )
-} )
+    console.log( videos[ 0 ] )
+  	} )
+	} )
 	}
 	});
 
