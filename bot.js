@@ -817,8 +817,6 @@ client.on('message', message => {
 
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 	
-	
-	
 	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
@@ -831,7 +829,7 @@ client.on('message', message => {
                 channel.leave();
             })
         });		  
-	} )
+	
 		
 	}
 	});
