@@ -814,7 +814,8 @@ client.on('message', message => {
     	queue.set(message.guild.id, queueConstruct);
 	queueConstruct.songs.push(song);
     	} else {
-
+	serverQueue.songs.push(song);
+	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
     	}	  
     
     
@@ -828,20 +829,19 @@ client.on('message', message => {
   	.setDescription(`🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / ${duration}s`)
   	.setThumbnail(avatar)
 	.setURL(video)
-     message.channel.send({embed});
-    channel.join()
-    .then(connection => {
-     connection.playOpusStream(ytdl(video), {
-     type: "opus" // type: opus is compulsory because this package returns opus stream
-     })
-     .on("end", () => {
-     channel.leave();
-      })
-      });
-      } )
-
-    }
-    });
+     	message.channel.send({embed});
+    	channel.join()
+    	.then(connection => {
+     	connection.playOpusStream(ytdl(video), {
+     	type: "opus" // type: opus is compulsory because this package returns opus stream
+     	})
+     	.on("end", () => {
+     	channel.leave();
+      	})
+      	});
+      	} )
+    	}
+    	});
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
