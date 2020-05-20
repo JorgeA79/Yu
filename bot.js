@@ -836,11 +836,8 @@ client.on('message', message => {
   			if ( err ) throw err
 
  			 const videos = r.videos
- 			 videos.forEach( function ( v ) {
-    			const views = String( v.views ).padStart( 1, ' ' )
-    			console.log( videos[ 0 ].url )
+ 			console.log( videos[ 0 ].url )
 			message.channel.sendMessage(videos[ 0 ].url);
-  				} )
 				} )
 		
 		
