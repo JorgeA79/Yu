@@ -817,22 +817,7 @@ client.on('message', message => {
 
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 	
-			  
-			  
-	if(!serverQueue){
-	const queueConstruct = {
-	textChannel : message.channel,
-	voiceChannel : channel,
-	connection : null,
-	songs: [],
-	volume: 5,
-		
-	}	
-	queue.set(message.guild.id, queueConstruct);
-		
-	} else {
-		      
-	}
+	
 	
 	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
@@ -846,7 +831,8 @@ client.on('message', message => {
                 channel.leave();
             })
         });		  
-	} )		      
+	} )
+		
 	}
 	});
 
