@@ -785,15 +785,20 @@ client.on('message', message => {
             .on("finish", () => {
                 channel.leave();
             })
-        });	
-		
-  	
-		
-		
+        });		
 	}
 	});
 
-
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'leave')) {
+	
+		  const voiceChannel = message.member.voiceChannel;
+     		voiceChannel.leave();
+		message.channel.sendMessage(":white_check_mark: **Disconnected!**");
+	}
+	});
 
 
 client.login(process.env.BOT_TOKEN);
