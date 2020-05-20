@@ -798,6 +798,11 @@ client.on('message', message => {
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
 	   const serverQueue = queue.get(message.guild.id)
+	 const songInfo = await ytdl.getInfo(video);
+	const song = {
+		title: Title,
+		url: video
+	}	
 	if(!serverQueue){
     	const queueConstruct = {
     	textChannel : message.channel,
@@ -808,7 +813,7 @@ client.on('message', message => {
 
     	}
     	queue.set(message.guild.id, queueConstruct);
-
+	queueConstruct.songs.push(song);
     	} else {
 
     	}	  
