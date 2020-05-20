@@ -801,9 +801,11 @@ client.on('message', message => {
 	}
 	});
 
-client.on('ready', () => console.log("Logged in."));
-client.on('message', async message => {
-    if(message.author.bot) return;
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+
+	if (message.content.startsWith(prefix + 'play')) {
 
     if(message.content.toLowerCase() === '!search') {
         let embed = new discord.RichEmbed()
