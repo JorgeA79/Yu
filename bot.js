@@ -800,12 +800,12 @@ client.on('message', message => {
 	var username = message.author.username
 	var avatar = videos[ 0 ].image;
 	var Title = videos[ 0 ].title;		  
-	var duration = videos[ 0 ].
+	var duration = videos[ 0 ].duration;
 	const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
   	.setColor(0x7AFFA8)
-  	.setDescription("🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / " + duration)
+  	.setDescription("🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / ${duration}")
   	.setThumbnail(avatar)
 	.setURL(video)
   	 message.channel.send({embed});				  
