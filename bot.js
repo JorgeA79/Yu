@@ -796,7 +796,13 @@ client.on('message', message => {
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
-	   const embed = new Discord.RichEmbed()
+	
+		  
+    const channel = message.member.voiceChannel;
+    if (!channel){
+    return message.channel.sendMessage(":x: You are not in a voice channel!!");
+        }
+       const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
   	.setColor(0x7AFFA8)
@@ -804,12 +810,6 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      message.channel.send({embed});
-		  
-    const channel = message.member.voiceChannel;
-    if (!channel){
-    return message.channel.sendMessage(":x: You are not in a voice channel!!");
-        }
-    
     channel.join()
     .then(connection => {
      connection.playOpusStream(ytdl(video), {
