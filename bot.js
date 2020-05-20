@@ -815,7 +815,16 @@ client.on('message', message => {
 	}
 	});
 
-
+client.on('message', message => {
+	if (message.author === client.user) return;
+	 if(message.channel.type === 'dm') return;
+	if (message.content.startsWith(prefix + 'search')) {
+	
+		  const args = message.content.slice(prefix.length).split(` `);
+		  var argsowo = args.splice(1).join(" ");
+		message.channel.sendMessage(argsowo);
+	}
+	});
 
 
 client.login(process.env.BOT_TOKEN);
