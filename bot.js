@@ -37,7 +37,7 @@ let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
 search('les presento a mi canaima', opts, function(err, results) {
   if(err) return console.log(err);
  
-  console.dir(results);
+  console.dir(results.result);
 });
 
    
