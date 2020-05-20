@@ -779,7 +779,7 @@ client.on('message', message => {
 		
 	channel.join()
 	 .then(connection => {
-            connection.playOpusStream(ytdl(args), {
+            connection.playOpusStream(ytdl(`${args}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("finish", () => {
