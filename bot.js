@@ -8,17 +8,17 @@ const playArbitraryFFmpeg = require('discord.js-arbitrary-ffmpeg');
 const yt = require('ytdl-core');
 const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
+const pg = require('pg')
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
+
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
     type: 'video'
 };
 
-//AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc
-
-const pg = require('pg')
 const pool = new pg.Pool({
 connectionString : process.env.DATABASE_URL,
 	port: 5432,
@@ -28,35 +28,28 @@ connectionString : process.env.DATABASE_URL,
        password: process.env.password,
         ssl: true,
 })
+pool.connect();
+
+let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 search('les presento a mi canaima', opts, function(err, results) {
   if(err) return console.log(err);
  
-  console.dir(results.link);
+  console.dir(results);
 });
 
+   
+//////////////////////////////////////////// S T A R T ////////////////////////////////////////////
 
-
-pool.connect();
-
-pool.query("SELECT xp,id FROM xp", (err, res) => {
-  if (err) {
-    console.log("pg returned an error");
-  }
-  if (res) {
-    console.log("pg returned a result from the SQL query");
-  }
+client.on('ready',() => {	
+	   client.user.setPresence({game: {name: "in JAPAN | p!help", type: 0}});  
 });
 
-let points = JSON.parse(fs.readFileSync("./database.json", "utf8"));
+/////////////////////////////////////////////////////////////////////////////////////////////////// 
 
-    
-
-client.on('ready',() => {
-	
-	   client.user.setPresence({game: {name: "in JAPAN | p!help", type: 0}});
- 	  
-});
+//////////////////////////////////////// V A R I A B L E S ////////////////////////////////////////
 
 var levels = "0"
 var levelsequ = "0"
@@ -84,7 +77,9 @@ var triviadb = [
 		"Where does JELLY live?",
 		"Where did PIXEL meet NIA?"
 	];
-////////////////////////////////////////////////TRIVIA//////////////////////////////////////
+
+//////////////////////////////////////////////// T R I V I A //////////////////////////////////////
+
 var trivianswersdb = [
 	        "PEANUT BUTTER",
 	        "AMMY",
@@ -171,13 +166,16 @@ var patgifs =  [
  	 "https://thumbs.gfycat.com/FlimsyDeafeningGrassspider-size_restricted.gif",
  	 "https://66.media.tumblr.com/a72dd82535f3e7accd827c202dacc09a/tumblr_pfyiqz0pFL1th206io1_640.gif"];
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////// C O M M A N D S /////////////////////////////////////////
 
 client.on('guildMemberAdd', member => {
     member.guild.channels.get('694781619306889266').send('WELCOME TO THE SERVER!! **' + member.user.username + '**,  Go introduce yourself in <#696322478922006588>! If you want, you can go to <#709716878263845218> and to join a club, go to <#709718943660769310>, You can also get your own roles in <#710829476971544596>!"'); 
 });
  
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'ping')) {
@@ -186,7 +184,143 @@ client.on('message', message => {
 	}
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'help')) {
+		
+	const embed = new Discord.RichEmbed()
+  .setTitle("Pixel's Commands")
+   .setColor(0xC76CF5)
+  .setDescription("Here you can find the main commands of the bot so you wont get confused")
+.setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
+
+  .addField("Main Commands",
+    "\`help\`,\`ping\`,\`server\`")
+
+  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
+.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`,\`pat\`")
+.addField("Japan Commands", "\`profile\`,\`ammy\`,\`pixel\`,\`nia\`,\`jelly\`,\`aldrin\`,\`chuuni\`")
+  message.channel.send({embed});		
+	}
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var say = "say";
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + say)) {
+		const args = message.content.slice(prefix.length).split(` `);
+		message.delete(1000);
+		if (!args.length) {
+		return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+	}
+		
+	const embed = new Discord.RichEmbed()
+   .setColor(0xC76CF5)
+  .setDescription(args.splice(1).join(" "))
+  message.channel.send({embed});
+
+		
+	}
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + '8ball')) {
+	var r8ballAnswer = answers[Math.floor(Math.random() * answers.length)];
+		message.channel.send(r8ballAnswer);
+	}
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'flip head')) {	
+	 	var result = Math.floor((Math.random() * 2) + 1);
+    	if (result == 1) {
+    		const embed = new Discord.RichEmbed()
+  .setTitle("Head")
+  .setColor(0xC76CF5)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+
+  message.channel.send({embed});
+		 message.channel.send(`You got me <:wholesomekermit:705354033799364628>`);
+    	} else if (result == 2) {
+    		const embed = new Discord.RichEmbed()
+
+  .setTitle("Tail")
+
+  .setColor(0xC76CF5)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+		
+  message.channel.send({embed});
+		 message.channel.send(`WOOOOOOOOOOO <:wholesomekermit:705354033799364628>`);
+    	}
+		
+	}
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'flip tail')) {	
+	 	var result = Math.floor((Math.random() * 2) + 1);
+    	if (result == 1) {
+    		const embed = new Discord.RichEmbed()
+
+  .setTitle("Head")
+  .setColor(0xC76CF5)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+
+  message.channel.send({embed});
+		 message.channel.send(`WOOOOOOOOOOO <:wholesomekermit:705354033799364628> `);
+    	} else if (result == 2) {
+    		const embed = new Discord.RichEmbed()
+  .setTitle("Tail")
+  .setColor(0xC76CF5)
+  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
+		
+
+  message.channel.send({embed});
+		
+		 message.channel.send(`You got me <:wholesomekermit:705354033799364628> `);
+    	}	
+	}
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'server')) {
+		const embed = new Discord.RichEmbed()
+  .setTitle("> Click to join our server <")
+  /*
+   * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
+   */
+  .setColor(0xC76CF5) 
+  
+  .setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
+  /*
+   * Takes a Date object, defaults to current date.
+   */
+  .setTimestamp()
+  .setURL("https://discord.gg/gwFXT55")
+  
+  message.channel.send({embed});
+				 
+	}		
+});
+
 ////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+
 client.on('message', message => {
 	if (message.author === client.user) return;
 	 if(message.channel.type === 'dm') return;
@@ -393,155 +527,9 @@ client.on('message', message => {
 	}
 });
 
-////////////////////////////////////////////////////////ROLEPLAY/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'help')) {
-		
-	const embed = new Discord.RichEmbed()
-  .setTitle("Pixel's Commands")
-   .setColor(0xC76CF5)
-  .setDescription("Here you can find the main commands of the bot so you wont get confused")
-.setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
-
-  .addField("Main Commands",
-    "\`help\`,\`ping\`,\`server\`")
-
-  .addField("Fun Commands", "\`8ball\`, \`flip\` \`head\` or \`tail\`,\`say\`")
-.addField("Roleplay Commands", "\`hug\`,\`slap\`,\`kiss\`,\`shoot\`,\`protect\`,\`wave\`,\`date\`,\`dance\`,\`pat\`")
-.addField("Japan Commands", "\`profile\`,\`ammy\`,\`pixel\`,\`nia\`,\`jelly\`,\`aldrin\`,\`chuuni\`")
-  message.channel.send({embed});
-
-		
-	}
-});
-
-var say = "say";
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + say)) {
-		const args = message.content.slice(prefix.length).split(` `);
-		message.delete(1000);
-		if (!args.length) {
-		return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
-	}
-		
-	const embed = new Discord.RichEmbed()
-   .setColor(0xC76CF5)
-  .setDescription(args.splice(1).join(" "))
-  message.channel.send({embed});
-
-		
-	}
-});
-
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + '8ball')) {
-	var r8ballAnswer = answers[Math.floor(Math.random() * answers.length)];
-		message.channel.send(r8ballAnswer);
-	}
-});
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'flip head')) {
-		
-	 	var result = Math.floor((Math.random() * 2) + 1);
-    	if (result == 1) {
-    		const embed = new Discord.RichEmbed()
-
-  .setTitle("Head")
-
-  .setColor(0xC76CF5)
-  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
-
-
-  message.channel.send({embed});
-		 message.channel.send(`You got me <:wholesomekermit:705354033799364628>`);
-    	} else if (result == 2) {
-    		const embed = new Discord.RichEmbed()
-
-  .setTitle("Tail")
-
-  .setColor(0xC76CF5)
-  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
-		
-
-  message.channel.send({embed});
-		 message.channel.send(`WOOOOOOOOOOO <:wholesomekermit:705354033799364628>`);
-    	}
-		
-	}
-});
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'flip tail')) {
-		
-	 	var result = Math.floor((Math.random() * 2) + 1);
-    	if (result == 1) {
-    		const embed = new Discord.RichEmbed()
-
-  .setTitle("Head")
-
-  .setColor(0xC76CF5)
-  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
-
-
-  message.channel.send({embed});
-		 message.channel.send(`WOOOOOOOOOOO <:wholesomekermit:705354033799364628> `);
-    	} else if (result == 2) {
-    		const embed = new Discord.RichEmbed()
-
-  .setTitle("Tail")
-
-  .setColor(0xC76CF5)
-  .setImage("https://68.media.tumblr.com/4c0e4d4f186433f84ad11109f0b619b2/tumblr_np6oolnI2c1td4t64o1_500.gif")
-		
-
-  message.channel.send({embed});
-		
-		 message.channel.send(`You got me <:wholesomekermit:705354033799364628> `);
-    	}
-		
-	}
-});
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'server')) {
-
-		const embed = new Discord.RichEmbed()
-  .setTitle("> Click to join our server <")
-  /*
-   * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
-   */
-  .setColor(0xC76CF5) 
-  
-  .setThumbnail("https://cdn.discordapp.com/avatars/370483123848478721/2a073955469d1aefda2ce240ab5d2948.png?size=128")
-  /*
-   * Takes a Date object, defaults to current date.
-   */
-  .setTimestamp()
-  .setURL("https://discord.gg/gwFXT55")
-  
-
-  message.channel.send({embed});
-		
-		 
-	}
-		
-});
-
-
-
-
-///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////// T R I V I A /////////////////////////////////////////
 
 client.on('message', message => {
 	if (message.author === client.user) return;
@@ -551,7 +539,6 @@ client.on('message', message => {
 		var selectkilldb = [Math.floor(Math.random() * triviadb.length)];
         var qselx = triviadb[selectkilldb]
 	 var ansselx = trivianswersdb[selectkilldb]
-        
 		 
 	message.channel.send(qselx + '\`15 seconds to answer, make sure to write all with CAPS\`')
 .then(() => {
@@ -568,7 +555,6 @@ client.on('message', message => {
 
   .setColor(0x7AFFA8)
   .setImage("https://media1.tenor.com/images/1a3e80b2d8b08e39d3a7355dc23a88db/tenor.gif?itemid=15018586")
-
 
   message.channel.send({embed});
 
@@ -590,6 +576,8 @@ client.on('message', message => {
 	
 	}
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////JAPAN/////////////////////////////////////////////////////////////////
 
@@ -620,6 +608,8 @@ client.on('message', message => {
 		
 });
 
+/////////////////////////////////////////////////JAPAN/////////////////////////////////////////////////////////////////
+
 	client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'profile pixel')) {
@@ -647,6 +637,8 @@ client.on('message', message => {
 		
 });
 
+/////////////////////////////////////////////////JAPAN/////////////////////////////////////////////////////////////////
+
 	client.on('message', message => {
 	if (message.author === client.user) return;
 	if (message.content.startsWith(prefix + 'profile nia')) {
@@ -673,6 +665,8 @@ client.on('message', message => {
 	}
 		
 });
+
+/////////////////////////////////////////////////JAPAN/////////////////////////////////////////////////////////////////
 
 	client.on('message', message => {
 	if (message.author === client.user) return;
@@ -772,6 +766,7 @@ client.on('message', message => {
 	}
 });
 
+///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
 client.on('message', message => {
 	if (message.author === client.user) return;
@@ -806,6 +801,8 @@ client.on('message', message => {
         });		
 	}
 	});
+
+///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
 client.on('message', message => {
 	if (message.author === client.user) return;
