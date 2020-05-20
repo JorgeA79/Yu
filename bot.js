@@ -779,7 +779,7 @@ client.on('message', message => {
 	if (message.content.startsWith(prefix + 'play')) {
 	const args = message.content.slice(prefix.length).split(` `);
 		
-		const serverQueue = queue.get(message.guild.id);
+	
 		
 ///////////////////////////////////SEARCH//////////////////////////////////////////////	
  
@@ -797,9 +797,7 @@ client.on('message', message => {
  			 const videos = r.videos
 			 const video = videos[ 0 ].url;
  			console.log( videos[ 0 ].url )
-			
-			  
-			  const channel = message.member.voiceChannel;
+			const channel = message.member.voiceChannel;
     	
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 	var username = message.author.username
@@ -813,23 +811,24 @@ client.on('message', message => {
   	.setDescription(`🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / ${duration}s`)
   	.setThumbnail(avatar)
 	.setURL(video)
-  	 message.channel.send({embed});				  
+  				  
 
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 	
-        if (!channel){
-    return message.channel.sendMessage(":x: You are not in a voice channel!!");
-        }
+      		if (!channel){
+   		 return message.channel.sendMessage(":x: You are not in a voice channel!!");
+       		 }
+		 message.channel.send({embed});		  
    		 channel.join()
      		.then(connection => {
            	 connection.playOpusStream(ytdl(${video}), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             	})
-            	.on("finish", () => {
+            	.on("end", () => {
                 channel.leave();
            	 })
       		  });
-                } )
+    })
 
     }
     });
