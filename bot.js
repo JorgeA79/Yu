@@ -5,6 +5,14 @@ const ffmpeg = require('ffmpeg');
 const playArbitraryFFmpeg = require('discord.js-arbitrary-ffmpeg');
 const yt = require('ytdl-core');
 const ytdl = require("discord-ytdl-core");
+const search = require('youtube-search');
+
+
+const opts = {
+    maxResults: 1,
+    key: process.env.YOUTUBE_API,
+    type: 'video'
+};
 
 //AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc
 
@@ -805,9 +813,8 @@ client.on('message', message => {
 client.on('message', message => {
 	if (message.author === client.user) return;
 
-	if (message.content.startsWith(prefix + 'play')) {
+	if (message.content.startsWith(prefix + 'search')) {
 
-    if(message.content.toLowerCase() === '!search') {
         let embed = new discord.RichEmbed()
             .setColor("#73ffdc")
             .setDescription("Please enter a search query. Remember to narrow down your search.")
