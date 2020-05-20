@@ -16,7 +16,7 @@ const yts = require( 'yt-search' )
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
 
 const streamOpt = { seek: 0, volume: 1};
-
+const queue = new Map();
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
@@ -779,6 +779,11 @@ client.on('message', message => {
 
 	if (message.content.startsWith(prefix + 'play')) {
 	const args = message.content.slice(prefix.length).split(` `);
+		
+		const serverQueue = queue.get(message.guild.id);
+		
+///////////////////////////////////SEARCH//////////////////////////////////////////////	
+ 
 		var argsowo = args.splice(1).join(" ");
 		const opts = {
   		query: argsowo,
@@ -788,7 +793,7 @@ client.on('message', message => {
 		}
 		
 		  yts( opts, function ( err, r ) {
-  			if ( err ) throw err
+  		  if ( err ) throw err
 
  			 const videos = r.videos
 			 const video = videos[ 0 ].url;
@@ -796,9 +801,7 @@ client.on('message', message => {
 			
 			  
 			  const channel = message.member.voiceChannel;
-    	if (!channel){
-	return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    	}
+    	
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 	var username = message.author.username
 	var avatar = videos[ 0 ].image;
@@ -814,27 +817,34 @@ client.on('message', message => {
   	 message.channel.send({embed});				  
 
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
+	
+			  
+			  
+	if(!serverQueue){
+	const queueConstruct = {
+	textChannel : message.channel,
+	voiceChannel : channel,
+	connection : null,
+	songs: [],
+	volume: 5,
 		
-	let stream = ytdl("https://www.youtube.com/watch?v=VcyFfcJbyeM", {
-            filter: "audioonly",
-            encoderArgs: [
-                '-af',
-                'equalizer=f=40:width_type=h:width=50:g=10'
-            ] // FFmpeg args array (optional)
-        });
+	}	
+	queue.set(message.guild.id, queueConstruct);
 		
-		
-	channel.join()
-	 .then(connection => {
-            connection.playOpusStream(ytdl(`${video}`, streamOpt), {
-                type: "opus" // type: opus is compulsory because this package returns opus stream
-            })
-            .on("finish", () => {
-                
-            })
-        });
-				} )
-			
+	} else {
+		      
+	}
+	var connection = await channel.join();
+	if (!channel){
+	return message.channel.sendMessage(":x: You are not in a voice channel!!");
+    	}
+	channel.join()	 
+	} )
+	const dispatcher = connection.playOpusStream(ytdl(`${video}`, streamOpt)
+	.on('end',()=>{
+	channel.leave();
+	})
+		      
 	}
 	});
 
