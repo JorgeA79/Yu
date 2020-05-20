@@ -833,16 +833,22 @@ client.on('message', message => {
 	} else {
 		      
 	}
-	var connection = await channel.join();
+	
 	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	channel.join()	 
 	} )
-	const dispatcher = connection.playOpusStream(ytdl(`${video}`, streamOpt)
-	.on('end',()=>{
-	channel.leave();
-	})
+	 
+	
+	.then(connection => {
+            connection.playOpusStream(ytdl(${video}), {
+                type: "opus" // type: opus is compulsory because this package returns opus stream
+            })
+            .on("finish", () => {
+                channel.leave();
+            })
+        });
 		      
 	}
 	});
