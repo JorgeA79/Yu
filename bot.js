@@ -60,6 +60,7 @@ var balance = "0"
 var reputation = "0"
 var experience = "0"
 var prefix = "p!"; 
+var queue = [];
 var triviadb = [
 	        "What does NIA love?",
 	        "Who did NIA met first?",
@@ -827,7 +828,7 @@ client.on('message', message => {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("finish", () => {
-                channel.leave();
+                
             })
         });
 				} )
