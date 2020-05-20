@@ -796,6 +796,7 @@ client.on('message', message => {
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
+	   const channel = message.member.voiceChannel;
 	   const serverQueue = queue.get(message.guild.id)
 	if(!serverQueue){
     	const queueConstruct = {
@@ -811,7 +812,7 @@ client.on('message', message => {
     	} else {
 
     	}	  
-    	const channel = message.member.voiceChannel;
+    
     
 	if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
