@@ -1,3 +1,5 @@
+///////////////////////////////////////// P A C K A G E S /////////////////////////////////////////
+
 const Discord = require('discord.js');
 const client = new Discord.Client();		    
 const fs = require("fs");
@@ -7,7 +9,7 @@ const yt = require('ytdl-core');
 const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
@@ -30,7 +32,7 @@ connectionString : process.env.DATABASE_URL,
 search('les presento a mi canaima', opts, function(err, results) {
   if(err) return console.log(err);
  
-  console.dir(results);
+  console.dir(results.link);
 });
 
 
