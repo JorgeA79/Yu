@@ -777,7 +777,7 @@ client.on('message', message => {
     if (message.author === client.user) return;
 
     if (message.content.startsWith(prefix + 'play')) {
-    const args = message.content.slice(prefix.length).split( );
+    const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
         const opts = {
           query: argsowo,
