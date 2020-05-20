@@ -15,6 +15,8 @@ const yts = require( 'yt-search' )
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
 
+const streamOpt = { seek: 0, volume: 1};
+
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
@@ -824,7 +826,7 @@ client.on('message', message => {
 		
 	channel.join()
 	 .then(connection => {
-            connection.playOpusStream(ytdl(`${video}`), {
+            connection.playOpusStream(ytdl(`${video}`, streamOpt), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("finish", () => {
