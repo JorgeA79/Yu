@@ -817,22 +817,22 @@ client.on('message', message => {
 
 ///////////////////////////////////OUTPUT MESSAGE//////////////////////////////////////////////	
 	
-	if (!channel){
-	return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    	}
-	channel.join()	 
-	.then(connection => {
-            connection.playOpusStream(ytdl(${video}), {
+        if (!channel){
+    return message.channel.sendMessage(":x: You are not in a voice channel!!");
+        }
+   		 channel.join()
+     		.then(connection => {
+           	 connection.playOpusStream(ytdl(${video}), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
-            })
-            .on("finish", () => {
+            	})
+            	.on("finish", () => {
                 channel.leave();
-            })
-        });		  
-	
-		
-	}
-	});
+           	 })
+      		  });
+                } )
+
+    }
+    });
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
