@@ -766,7 +766,9 @@ client.on('message', message => {
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    	 let stream = ytdl("https://www.youtube.com/watch?v=VcyFfcJbyeM", {
+    	
+		
+		let stream = ytdl("https://www.youtube.com/watch?v=VcyFfcJbyeM", {
             filter: "audioonly",
             encoderArgs: [
                 '-af',
@@ -777,7 +779,7 @@ client.on('message', message => {
 		
 	channel.join()
 	 .then(connection => {
-            connection.playOpusStream(stream, {
+            connection.playOpusStream(await ytdl(args), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("finish", () => {
