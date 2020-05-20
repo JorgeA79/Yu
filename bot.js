@@ -805,7 +805,7 @@ client.on('message', message => {
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
   	.setColor(0x7AFFA8)
-  	.setDescription(`🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / ${duration}`)
+  	.setDescription(`🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 0s / ${duration}s`)
   	.setThumbnail(avatar)
 	.setURL(video)
   	 message.channel.send({embed});				  
