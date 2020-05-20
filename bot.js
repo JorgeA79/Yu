@@ -825,16 +825,10 @@ client.on('message', message => {
 		message.channel.sendMessage(argsowo);
 		
 		search(argsowo, opts, function(err, results) {
-  		if(err) return console.log(err);
-		
-		var youtubeResults = results.results;
-		let links = youtubeResults.map(result => {
-                i++;
-                return i + ") " + result.link;
-            	});
-		
+  		if(err) return console.log(err);		
+		var youtubeResults = results.results;				
 		let selected = youtubeResults[0];	
-			
+		message.channel.sendMessage(selected.link);	
   		console.log(selected.link);	
 		
 	});
