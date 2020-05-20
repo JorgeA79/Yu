@@ -827,7 +827,7 @@ client.on('message', message => {
 		search(argsowo, opts, function(err, results) {
   		if(err) return console.log(err);
  
-  		console.dir(results.item[1]);
+  		console.dir(results.results[1]);
 });
 	}
 	});
