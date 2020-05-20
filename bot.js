@@ -759,14 +759,14 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 
 	if (message.content.startsWith(prefix + 'play')) {
-	
+	const args = message.content.split(" ").slice(1);
 	
 	const channel = message.member.voiceChannel;
     	if (!channel){
 	return message.channel.sendMessage(":x: You are not in a voice channel!!");
     	}
 	message.channel.sendMessage(":white_check_mark: **Connected!**");
-    	 let stream = ytdl("https://youtube.com/watch?v=ERu6jh_1gR0", {
+    	 let stream = ytdl(args, {
             filter: "audioonly",
             encoderArgs: [
                 '-af',
