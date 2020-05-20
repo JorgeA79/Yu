@@ -825,38 +825,13 @@ client.on('message', message => {
 		message.channel.sendMessage(argsowo);
 		
 		search(argsowo, opts, function(err, results) {
-  		if(err) return console.log(err);		
-		var youtubeResults = results.results;				
-		let selected = youtubeResults[0];	
-		message.channel.sendMessage(selected.link);	
-  		console.log(selected.link);	
+
+  		console.log(results.results.items[1]);	
 		
 	});
 	}
 	});
 
-
-
-
-client.on('message', message => {
-	if (message.author === client.user) return;
-	 if(message.channel.type === 'dm') return;
-	if (message.content.startsWith(prefix + 'searchowo')) {
-
-  let filter = m => m.author.id === message.author.id;
-        let query = await message.channel.awaitMessages(filter, { max: 1 });
-        let results = await search(query.first().content, opts).catch(err => console.log(err));
-        if(results) {
-            let youtubeResults = results.results;
-            let i  =0;
-            let titles = youtubeResults.map(result => {
-                i++;
-                return i + ") " + result.title;
-            });
-            console.log(titles);
-
-}
-	});
 
 
 client.login(process.env.BOT_TOKEN);
