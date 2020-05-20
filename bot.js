@@ -6,6 +6,7 @@ const playArbitraryFFmpeg = require('discord.js-arbitrary-ffmpeg');
 const yt = require('ytdl-core');
 const ytdl = require("discord-ytdl-core");
 
+//AIzaSyDCk1-hiwXO7PhT27ZuBRXIfhrrIHuhAOc
 
 const pg = require('pg')
 const pool = new pg.Pool({
