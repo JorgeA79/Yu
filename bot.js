@@ -830,10 +830,10 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-    	channel.join()
+    	
+		channel.join()
     	.then(connection => {
-	
-
+	const serverQueue = queue.get(guild.id);
 	console.log(queueConstruct.songs);	
      	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
 	type:"opus"			  
@@ -841,6 +841,7 @@ client.on('message', message => {
      	
 		
 	.on("end", () => {
+		
 	serverQueue.songs.shift();
 	connection.playOpusStream(ytdl(serverQueue.songs[0].url),{
 	type:"opus"			  
