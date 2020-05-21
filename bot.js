@@ -812,7 +812,7 @@ client.on('message', message => {
     channel.join()
      .then(connection => {
 	    
-            connection.playOpusStream(ytdl(video), {
+            connection.playOpusStream(ytdl(`${video}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("end", () => {
