@@ -823,7 +823,7 @@ client.on('message', message => {
 		  else {
 	serverQueue.songs.push(song);
 	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-	console.log(queueConstruct.songs);	
+	console.log(queueConstruct.songs[1]);	
     	}	  
     
     if (!channel){
@@ -839,6 +839,7 @@ client.on('message', message => {
      	message.channel.send({embed});
     	channel.join()
     	.then(connection => {
+	
 	if(!queueConstruct.songs[0].url){
 		channel.leave();
 		queue.delete(guild.id);
