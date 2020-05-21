@@ -800,16 +800,18 @@ client.on('message', message => {
 	 const song = {
 		title: Title,
 		url: video
-	}	
-	if(!serverQueue){
-    	const queueConstruct = {
+	}
+	 
+	const queueConstruct = {
     	textChannel : message.channel,
     	voiceChannel : channel,
     	connection : null,
     	songs: [],
     	volume: 5,
 
-    	}
+    	} 
+	if(!serverQueue){
+    	
     	queue.set(message.guild.id, queueConstruct);
 	queueConstruct.songs.push(song);
 		
@@ -848,8 +850,7 @@ client.on('message', message => {
      	
 		
 	.on("end", () => {
-     	serverQueue.songs.shift();
-	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))	
+
       	})
 	});
       	} )
