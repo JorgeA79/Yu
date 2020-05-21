@@ -845,7 +845,7 @@ client.on('message', message => {
 	});
 		
       	})
-		
+	});	
     	} else {
 	
 	serverQueue.songs.push(song);		
@@ -853,7 +853,7 @@ client.on('message', message => {
 		
     	}	  
     
-	});
+	
       	} )
     	}
     	});
