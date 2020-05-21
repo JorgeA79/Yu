@@ -775,8 +775,6 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.author === client.user) return;
-		const serverQueue = queue.get(message.guild.id);
-		console.log(message.guild.id);
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
@@ -798,31 +796,11 @@ client.on('message', message => {
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
 	
-	 const song = {
-		title: Title,
-		url: video
-	}
-	 
-	
-	if(!serverQueue){
-    	const queueConstruct = {
-    	textChannel : message.channel,
-    	voiceChannel : channel,
-    	connection : null,
-    	songs: [],
-    	volume: 5,
-
-    	} 
-	
-    	queue.set(message.guild.id, queueConstruct);
-	console.log(queue)
-	queueConstruct.songs.push(song);
-		
-		
-      	if (!channel){
-    	return message.channel.sendMessage(":x: You are not in a voice channel!!");
+	   const channel = message.member.voiceChannel;
+        if (!channel){
+    return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
-       const embed = new Discord.RichEmbed()
+	const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
   	.setColor(0x7AFFA8)
@@ -830,36 +808,22 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-    	
-		channel.join()
-    	.then(connection => {
-	const serverQueue = queue.get(message.guild.id);
-	console.log(queueConstruct.songs);	
-     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
-	type:"opus"			  
-	})
-     	
-		
-	.on("end", () => {
-		
-	serverQueue.songs.shift();
-	connection.playOpusStream(ytdl(serverQueue.songs[0].url),{
-	type:"opus"			  
-	});
-		
-      	})
-	});	
-    	} else {
-	
-	serverQueue.songs.push(song);		
-	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-		
-    	}	  
-    
-	
-      	} )
-    	}
-    	});
+
+
+    channel.join()
+     .then(connection => {
+	    
+            connection.playOpusStream(ytdl(${video}), {
+                type: "opus" // type: opus is compulsory because this package returns opus stream
+            })
+            .on("finish", () => {
+                channel.leave();
+            })
+        });
+                } )
+
+    }
+    });
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
