@@ -815,6 +815,7 @@ client.on('message', message => {
     	} 
 	
     	queue.set(message.guild.id, queueConstruct);
+		console.log(serverQueue)
 	queueConstruct.songs.push(song);
 		
 		
