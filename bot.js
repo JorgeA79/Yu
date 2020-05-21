@@ -10,7 +10,7 @@ const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
 const pg = require('pg')
 const yts = require( 'yt-search' )
-const serverQueue = queue.get(message.guild.id);
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
@@ -775,7 +775,8 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.author === client.user) return;
-
+		const serverQueue = queue.get(message.guild.id);
+		console.log(message.guild.id);
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
