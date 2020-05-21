@@ -813,7 +813,17 @@ client.on('message', message => {
     	queue.set(message.guild.id, queueConstruct);
 	queueConstruct.songs.push(song);
 		
-		if (!channel){
+		
+      		
+    	} 
+		  
+		  
+		  else {
+	serverQueue.songs.push(song);
+	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
+    	}	  
+    
+    if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
        const embed = new Discord.RichEmbed()
@@ -841,17 +851,6 @@ client.on('message', message => {
      	serverQueue.songs.shift();
 	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))	
       	})
-      	
-		
-    	} 
-		  
-		  
-		  else {
-	serverQueue.songs.push(song);
-	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-    	}	  
-    
-    
 	});
       	} )
     	}
