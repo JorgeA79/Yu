@@ -795,7 +795,6 @@ client.on('message', message => {
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
-		 const songowo;
 	   const channel = message.member.voiceChannel;
 	 const serverQueue = queue.get(message.guild.id);
 	 const song = {
