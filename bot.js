@@ -801,7 +801,6 @@ client.on('message', message => {
 	   const urlSt =  video.toString(); 
 		  
 		  
-	videosA.push(urlSt);		  
         if (!channel){
     return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
