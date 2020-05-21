@@ -803,6 +803,13 @@ client.on('message', message => {
 		url: video
 	}
 	 
+	const queueConstructO = {
+    	textChannel : message.channel,
+    	voiceChannel : channel,
+    	connection : null,
+    	songs: [],
+    	volume: 5,
+	}
 	
 	if(!serverQueue){
     	const queueConstruct = {
@@ -813,16 +820,15 @@ client.on('message', message => {
     	volume: 5,
 
     	} 
-	songowo = queueConstruct.songs[0].url;
-    	queue.set(message.guild.id, queueConstruct);
-	queueConstruct.songs.push(song);
+	
+    	queue.set(message.guild.id, queueConstructO);
+	queueConstructO.songs.push(song);
 		
 		
       		
     	} else {
-	songowo = serverQueue.songs[0].url;
+	
 	serverQueue.songs.push(song);		
-	console.log(queueConstruct.songs[0]);		  
 	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
 		
     	}	  
@@ -841,20 +847,16 @@ client.on('message', message => {
     	channel.join()
     	.then(connection => {
 	
-	if(!songowo){
-		channel.leave();
-		queue.delete(message.guild.id);
-		return;
-	}
-	console.log(queueConstruct.songs);	
-     	connection.playOpusStream(ytdl(songowo),{
+
+	console.log(queueConstructO.songs);	
+     	connection.playOpusStream(ytdl(queueConstructO.songs[0].url),{
 	type:"opus"			  
 	})
      	
 		
 	.on("end", () => {
 	serverQueue.songs.shift();
-	connection.playOpusStream(ytdl(songowo),{
+	connection.playOpusStream(ytdl(serverQueue.songs[0].url),{
 	type:"opus"			  
 	});
 		
