@@ -842,7 +842,21 @@ client.on('message', message => {
 	}
 	});
 
-//
+client.on('message', message => {
+	if (message.author === client.user) return;
+	if (message.content.startsWith(prefix + 'test')) {
+
+		const embed = new Discord.RichEmbed()
+
+  .setAuthor('Rii', 'https://cdn.discordapp.com/avatars/306367704934252546/b827cdbc2be0ad4b5d4fb496b72ab080.png?size=256')
+  .setColor(0x7AFFA8)
+  .setDescription("Owo")
+  .setThumbnail('https://cdn.discordapp.com/avatars/306367704934252546/b827cdbc2be0ad4b5d4fb496b72ab080.png?size=256')
+
+  message.channel.send({embed});		 
+	}
+		
+});
 
 client.login(process.env.BOT_TOKEN);
 
