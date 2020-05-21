@@ -841,7 +841,7 @@ client.on('message', message => {
      	serverQueue.songs.shift();
 	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))	
       	})
-      	});
+      	
 		
     	} 
 		  
@@ -852,7 +852,7 @@ client.on('message', message => {
     	}	  
     
     
-	
+	});
       	} )
     	}
     	});
