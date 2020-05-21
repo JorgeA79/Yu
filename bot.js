@@ -863,7 +863,7 @@ client.on('message', message => {
 	if (message.author === client.user) return;
 	 if(message.channel.type === 'dm') return;
 	if (message.content.startsWith(prefix + 'leave')) {
-	
+		queue.delete(guild.id);
 		  const voiceChannel = message.member.voiceChannel;
      		voiceChannel.leave();
 		message.channel.sendMessage(":white_check_mark: **Disconnected!**");
