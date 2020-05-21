@@ -54,7 +54,7 @@ client.on('ready',() => {
 /////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 //////////////////////////////////////// V A R I A B L E S ////////////////////////////////////////
-var videosA= []  
+var videosA= [];
 var levels = "0"
 var levelsequ = "0"
 var nextlevel = "0"
@@ -798,7 +798,10 @@ client.on('message', message => {
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-	videosA.push(video);		  
+	   const urlSt =  video.toString(); 
+		  
+		  
+	videosA.push(urlSt);		  
         if (!channel){
     return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
