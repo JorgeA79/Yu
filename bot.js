@@ -795,8 +795,7 @@ client.on('message', message => {
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-	
-	   const channel = message.member.voiceChannel;
+
         if (!channel){
     return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
