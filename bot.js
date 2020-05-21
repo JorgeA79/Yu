@@ -837,14 +837,10 @@ client.on('message', message => {
 		queue.delete(guild.id);
 		return;
 	}
-     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url), {
-     	type: "opus" // type: opus is compulsory because this package returns opus stream
-     	})
+     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))
      	.on("end", () => {
      	serverQueue.songs.shift();
-	connection.playOpusStream(ytdl(queueConstruct.songs[0].url){
-     	type: "opus" // type: opus is compulsory because this package returns opus stream
-     	})	
+	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))	
       	})
       	});
       	} )
