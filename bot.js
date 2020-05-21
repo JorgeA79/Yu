@@ -833,7 +833,7 @@ client.on('message', message => {
     	channel.join()
     	.then(connection => {
 	if(!queueConstruct.songs[0].url){
-		serverQueue.voiceChannel.leave();
+		channel.leave();
 		queue.delete(guild.id);
 		return;
 	}
