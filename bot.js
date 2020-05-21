@@ -810,7 +810,7 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-	message.channel.sendMessage(videosA);
+	console.dir(videosA);
 
     channel.join()
      .then(connection => {
