@@ -844,7 +844,7 @@ client.on('message', message => {
 		return;
 	}
 	console.log(queueConstruct.songs);	
-     	connection.playOpusStream(ytdl(),{
+     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
 	type:"opus"			  
 	})
      	
