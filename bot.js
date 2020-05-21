@@ -833,7 +833,7 @@ client.on('message', message => {
     	
 		channel.join()
     	.then(connection => {
-	const serverQueue = queue.get(guild.id);
+	const serverQueue = queue.get(message.guild.id);
 	console.log(queueConstruct.songs);	
      	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
 	type:"opus"			  
