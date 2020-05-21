@@ -803,13 +803,6 @@ client.on('message', message => {
 		url: video
 	}
 	 
-	const queueConstructO = {
-    	textChannel : message.channel,
-    	voiceChannel : channel,
-    	connection : null,
-    	songs: [],
-    	volume: 5,
-	}
 	
 	if(!serverQueue){
     	const queueConstruct = {
@@ -821,19 +814,11 @@ client.on('message', message => {
 
     	} 
 	
-    	queue.set(message.guild.id, queueConstructO);
-	queueConstructO.songs.push(song);
+    	queue.set(message.guild.id, queueConstruct);
+	queueConstruct.songs.push(song);
 		
 		
-      		
-    	} else {
-	
-	serverQueue.songs.push(song);		
-	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-		
-    	}	  
-    
-    if (!channel){
+      	if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
        const embed = new Discord.RichEmbed()
@@ -848,8 +833,8 @@ client.on('message', message => {
     	.then(connection => {
 	
 
-	console.log(queueConstructO.songs);	
-     	connection.playOpusStream(ytdl(queueConstructO.songs[0].url),{
+	console.log(queueConstruct.songs);	
+     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
 	type:"opus"			  
 	})
      	
@@ -861,6 +846,14 @@ client.on('message', message => {
 	});
 		
       	})
+		
+    	} else {
+	
+	serverQueue.songs.push(song);		
+	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
+		
+    	}	  
+    
 	});
       	} )
     	}
