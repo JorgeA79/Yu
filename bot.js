@@ -853,7 +853,7 @@ client.on('message', message => {
      	
 		
 	.on("end", () => {
-	serverQueue.songs.shift();
+	queueConstruct.songs.shift();
 	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
 	type:"opus"			  
 	});
