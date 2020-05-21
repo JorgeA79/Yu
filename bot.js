@@ -823,6 +823,7 @@ client.on('message', message => {
 		  else {
 	serverQueue.songs.push(song);
 	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
+	console.log(queueConstruct.songs);	
     	}	  
     
     if (!channel){
