@@ -821,8 +821,8 @@ client.on('message', message => {
 		  
 		  
 		  else {
-	serverQueue.songs.push(song);
-	console.log(queueConstruct.songs[0].url);		  
+	queueConstruct.songs.push(song);		
+	console.log(queueConstruct.songs[0]);		  
 	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
 		
     	}	  
