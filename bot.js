@@ -10,7 +10,7 @@ const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
 const pg = require('pg')
 const yts = require( 'yt-search' )
-
+const serverQueue = queue.get(message.guild.id);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
@@ -796,7 +796,7 @@ client.on('message', message => {
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-	 const serverQueue = queue.get(message.guild.id);
+	
 	 const song = {
 		title: Title,
 		url: video
