@@ -791,7 +791,6 @@ client.on('message', message => {
 
            const videos = r.videos
            const video = videos[ 0 ].url;
-           console.log( videos[ 0 ].url )
 	   var username = message.author.username
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
@@ -813,13 +812,8 @@ client.on('message', message => {
     	}
     	queue.set(message.guild.id, queueConstruct);
 	queueConstruct.songs.push(song);
-    	} else {
-	serverQueue.songs.push(song);
-	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-    	}	  
-    
-    
-	if (!channel){
+		
+		if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
        const embed = new Discord.RichEmbed()
@@ -848,6 +842,17 @@ client.on('message', message => {
 	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))	
       	})
       	});
+		
+    	} 
+		  
+		  
+		  else {
+	serverQueue.songs.push(song);
+	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
+    	}	  
+    
+    
+	
       	} )
     	}
     	});
