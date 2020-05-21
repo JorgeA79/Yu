@@ -777,7 +777,8 @@ client.on('message', message => {
     if (message.author === client.user) return;
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
-        var argsowo = args.splice(1).join(" ");
+        
+	var argsowo = args.splice(1).join(" ");
         const opts = {
           query: argsowo,
           // search: 'superman theme', // same as opts.query
@@ -788,6 +789,8 @@ client.on('message', message => {
           yts( opts, function ( err, r ) {
            if ( err ) throw err
 	
+		  
+	var videosA= []  
            const videos = r.videos
            const video = videos[ 0 ].url;
 	   var username = message.author.username
@@ -795,7 +798,7 @@ client.on('message', message => {
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-
+	videosA.push(video);		  
         if (!channel){
     return message.channel.sendMessage(":x: You are not in a voice channel!!");
         }
@@ -807,7 +810,7 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-
+	message.channel.sendMessage(videosA);
 
     channel.join()
      .then(connection => {
