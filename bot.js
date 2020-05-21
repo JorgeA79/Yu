@@ -54,7 +54,7 @@ client.on('ready',() => {
 /////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 //////////////////////////////////////// V A R I A B L E S ////////////////////////////////////////
-
+var videosA= []  
 var levels = "0"
 var levelsequ = "0"
 var nextlevel = "0"
@@ -790,7 +790,7 @@ client.on('message', message => {
            if ( err ) throw err
 	
 		  
-	var videosA= []  
+	
            const videos = r.videos
            const video = videos[ 0 ].url;
 	   var username = message.author.username
@@ -811,7 +811,7 @@ client.on('message', message => {
 	.setURL(video)
      	message.channel.send({embed});
 	
-		  console.log(videosA[0,5]);
+		  console.dir(videosA);
 
     channel.join()
      .then(connection => {
