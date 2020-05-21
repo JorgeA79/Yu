@@ -837,8 +837,12 @@ client.on('message', message => {
 		queue.delete(guild.id);
 		return;
 	}
-     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))
-     	.on("end", () => {
+     	connection.playOpusStream(ytdl(queueConstruct.songs[0].url),{
+	type:"opus"			  
+	})
+     	
+		
+	.on("end", () => {
      	serverQueue.songs.shift();
 	connection.playOpusStream(ytdl(queueConstruct.songs[0].url))	
       	})
