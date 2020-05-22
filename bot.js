@@ -877,9 +877,8 @@ queue.delete(guild.id);
 	return;
 	
 }
-     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song.url))
-	.on("end", () => {
-		
+     const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
+	.on("end", () => {		
 	serverQueue.songs.shift();
 	play(guild, serverQueue.songs[0])
 		
