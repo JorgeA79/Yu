@@ -787,7 +787,7 @@ client.on('message', message => {
 client.on('message', async message => {
     if (message.author === client.user) return;
 	const serverQueue = queue.get(message.guild.id);
-	const channel = message.member.voice;
+	const { channel } = message.member.voice;
 
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
