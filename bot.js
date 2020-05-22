@@ -818,7 +818,9 @@ client.on('message', message => {
      	message.channel.send({embed});
 	array.push(video.toString()); 
 	console.dir(array);
-    	channel.join()
+    	
+	if(array.length == 0){
+	channel.join()
     	.then(connection => {
 	    
 	
@@ -840,6 +842,11 @@ client.on('message', message => {
             })
 		
        	   });
+		
+	}else{
+	
+	return message.channel.sendMessage(`Added **${Title}** to the queue`);
+	}
 		   
        	   } )
 
