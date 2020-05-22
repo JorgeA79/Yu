@@ -886,7 +886,7 @@ queue.delete(guild.id);
     return;
 }
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-	  .on('end', (){
+	  .on('end', () => {
 	     serverQueue.songs.shift();
 		play(guild, serverQueue.songs[0]);
 	      })
