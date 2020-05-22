@@ -825,7 +825,10 @@ client.on('message', message => {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("end", () => {
-                channel.leave();
+	        array.shift();
+                connection.playOpusStream(ytdl(`${array}`), {
+                type: "opus" // type: opus is compulsory because this package returns opus stream
+            })
             })
        	   });
        	   } )
