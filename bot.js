@@ -10,7 +10,7 @@ const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
 const pg = require('pg')
 const yts = require( 'yt-search' )
-
+const prism = require('prism-media');
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -868,7 +868,7 @@ client.on('message', message => {
 });
 
 
-function play(guild, song)
+ async function play(guild, song)
 {
    const serverQueue = queue.get(message.guild.id);
 if(!song){
@@ -877,13 +877,10 @@ queue.delete(guild.id);
 	return;
 	
 }
-     const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-	.on("end", () => {		
-	serverQueue.songs.shift();
-	play(guild, serverQueue.songs[0])
-		
-      	})
-dispatcher.setVolumeLogarithmic(5/5);
+   const input = await ytdl(song)
+  const pcm = input.pipe(new prism.opus.Decoder({ rate: 48000, channels: 2, frameSize: 960 }));
+
+  const dispatcher = connection.playConvertedStream(pcm);
 }
 
 client.login(process.env.BOT_TOKEN);
