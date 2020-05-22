@@ -882,7 +882,13 @@ serverQueue.voiceChannel.leave();
 queue.delete(guild.id);	
 	return;	
 }
-		
+	serverQueue.connection.playOpusStream(ytdl(song.url),{
+    		type:"opus"              
+    	})
+    		.on('end', ()=>{
+    		serverQueue.songs.shift();
+    		play(guild, serverQueue.songs[0]);        
+    })	
 }
 
 client.login(process.env.BOT_TOKEN);
