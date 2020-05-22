@@ -823,6 +823,7 @@ client.on('message', async message => {
 	try{
 	var connection = await channel.join();
 	queueConstruct.connection = connection;
+		
 	play(message.guild, queueConstruct.songs[0]);
 		}catch (error){
 		queue.delete(message.guild.id);	
@@ -881,13 +882,7 @@ serverQueue.voiceChannel.leave();
 queue.delete(guild.id);	
 	return;	
 }
-	const dispatches = serverQueue.connection.playOpusStream(ytdl(song.url),{
-	type:"opus"			  
-	})
-	.on('end', ()=>{
-	serverQueue.songs.shift();
-	play(guild, serverQueue.songs[0]);		
-	})	
+		
 }
 
 client.login(process.env.BOT_TOKEN);
