@@ -792,12 +792,11 @@ client.on('message', async message => {
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
-
-	    
+	const songInfo = await ytdl.getInfo(argsowo);	    
 	const song = {
-		title: "owo",
-		url: "https://www.youtube.com/watch?v=b-WMFOLb-Zo"
-	}
+		title: songInfo.title,
+		url: songInfo.video_url
+	};
 	
 	if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
@@ -812,10 +811,12 @@ client.on('message', async message => {
     	volume: 5,
     	} 
 	
+	
+	queueConstruct.songs.push(song);
     	queue.set(message.guild.id, queueConstruct);
 	console.log(queue)
-	queueConstruct.songs.push("https://www.youtube.com/watch?v=b-WMFOLb-Zo");		
-
+			
+	console.log(queueConstruct.songs);
       
     	
 	try{
@@ -827,8 +828,8 @@ client.on('message', async message => {
 		}
     	} else {
 	
-	serverQueue.songs.push("https://www.youtube.com/watch?v=b-WMFOLb-Zo");		
-	message.channel.sendMessage(`**xd** has been added to the queue!`);
+	serverQueue.songs.push(song);		
+	message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
 		
     	}	  
     
@@ -876,7 +877,7 @@ queue.delete(guild.id);
 	return;
 	
 }
-     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song))
+     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song.url))
 	.on("end", () => {
 		
 	serverQueue.songs.shift();
