@@ -883,7 +883,7 @@ serverQueue.voiceChannel.leave();
 queue.delete(guild.id);	
 	return;	
 }
-	console.dir(serverQueue.connection);
+	console.log(song.url);
 	serverQueue.connection.playOpusStream(ytdl(song.url),{
     		type:"opus"              
     	})
