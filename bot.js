@@ -817,7 +817,8 @@ client.on('message', async message => {
 	console.log(queue)
 			
 	console.log(queueConstruct.songs);
-      
+      	console.log(serverQueue.songs);
+
     	
 	try{
 	var connection = await channel.join();
