@@ -877,13 +877,15 @@ client.on('message', message => {
 
 function play(guild, song)
 {
-   const serverQueue = queue.get(message.guild.id);
+	
+console.log(song.url);	
+const serverQueue = queue.get(message.guild.id);
 if(!song){
 serverQueue.voiceChannel.leave();	
 queue.delete(guild.id);	
 	return;	
 }
-	console.log(song.url);
+	
 
 }
 
