@@ -817,7 +817,7 @@ client.on('message', message => {
 	.setURL(video)
      	message.channel.send({embed});
 	array.push(video.toString()); 
-	
+	console.dir(array);
     	channel.join()
     	.then(connection => {
 	    
