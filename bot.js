@@ -17,7 +17,6 @@ const yts = require( 'yt-search' )
 /////////////////////////////////// C O N F I G U R A T I O N S ///////////////////////////////////
 
 const streamOpt = { seek: 0, volume: 1};
-const queue = new Map();
 const opts = {
     maxResults: 1,
     key: process.env.YOUTUBE_API,
