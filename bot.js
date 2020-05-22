@@ -814,7 +814,7 @@ client.on('message', async message => {
 	
     	queue.set(message.guild.id, queueConstruct);
 	console.log(queue)
-	queueConstruct.songs.push(song);		
+	queueConstruct.songs.push("https://www.youtube.com/watch?v=b-WMFOLb-Zo");		
 
       
     	
@@ -827,7 +827,7 @@ client.on('message', async message => {
 		}
     	} else {
 	
-	serverQueue.songs.push(song);		
+	serverQueue.songs.push("https://www.youtube.com/watch?v=b-WMFOLb-Zo");		
 	message.channel.sendMessage(`**xd** has been added to the queue!`);
 		
     	}	  
@@ -876,7 +876,7 @@ queue.delete(guild.id);
 	return;
 	
 }
-     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song.url),{
+     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song),{
 	type:"opus"			  
 	})
 	.on("end", () => {
