@@ -880,13 +880,14 @@ function play(guild, song)
 	
 console.log(song.url);	
 const serverQueue = queue.get(message.guild.id);
-if(!song){
-serverQueue.voiceChannel.leave();	
-queue.delete(guild.id);	
-	return;	
-}
-	
 
+	serverQueue.connection.playOpusStream(ytdl(song.url),{
+	type:"opus"			  
+	})		
+	.on("end", () => {	
+	serverQueue.songs.shift();
+})
+	    
 }
 
 client.login(process.env.BOT_TOKEN);
