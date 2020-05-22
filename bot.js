@@ -876,16 +876,14 @@ queue.delete(guild.id);
 	return;
 	
 }
-     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song),{
-	type:"opus"			  
-	})
+     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song))
 	.on("end", () => {
 		
 	serverQueue.songs.shift();
 	play(guild, serverQueue.songs[0])
 		
       	})
-
+dispatcher.setVolumeLogarithmic(5/5);
 }
 
 client.login(process.env.BOT_TOKEN);
