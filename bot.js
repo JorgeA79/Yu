@@ -844,8 +844,7 @@ client.on('message', message => {
        	   });
 		
 	}else{
-	
-	return message.channel.sendMessage(`Added **${Title}** to the queue`);
+	 message.channel.sendMessage(`Added **${Title}** to the queue`);
 	}
 		   
        	   } )
