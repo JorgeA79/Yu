@@ -814,7 +814,7 @@ client.on('message', async message => {
 	
 	queueConstruct.songs.push(song);
     	queue.set(message.guild.id, queueConstruct);
-	console.log(queue)
+
 			
 	console.log(queueConstruct.songs);
      
