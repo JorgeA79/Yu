@@ -819,7 +819,7 @@ client.on('message', message => {
 	array.push(video.toString()); 
 	console.dir(array);
     	
-	if(array.length == 0){
+	if(array.length == 1){
 	channel.join()
     	.then(connection => {
 	    
@@ -844,7 +844,7 @@ client.on('message', message => {
        	   });
 		
 	}else{
-	 message.channel.sendMessage(`Added **${Title}** to the queue`);
+	 return message.channel.sendMessage(`Added **${Title}** to the queue`);
 	}
 		   
        	   } )
