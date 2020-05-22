@@ -10,6 +10,7 @@ const ytdl = require("discord-ytdl-core");
 const search = require('youtube-search');
 const pg = require('pg')
 const yts = require( 'yt-search' )
+var searcher = require('google-image-searcher');
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +55,7 @@ client.on('ready',() => {
 /////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 //////////////////////////////////////// V A R I A B L E S ////////////////////////////////////////
-var videosA= [];
+var videosA= ["https://www.youtube.com/watch?v=Dst9gZkq1a8"];
 var levels = "0"
 var levelsequ = "0"
 var nextlevel = "0"
@@ -763,11 +764,16 @@ client.on("message", message => {
 
 client.on('message', message => {
 	if (message.author === client.user) return;
-	if (message.content.startsWith(prefix + 'add points')) {
-	
-		  	
-		
-		
+	if (message.content.startsWith(prefix + 'image')) {
+	const args = message.content.slice(prefix.length).split(' ');
+	var argsowo = args.splice(1).join(" ");
+	const embed = new Discord.RichEmbed()
+	.setDescription(`Results for ${argsowo}`)	
+	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
+  	.setColor(0x7AFFA8)	
+	.setImage('https://i.imgur.com/wSTFkRM.png')
+	.setTimestamp()
+	 message.channel.send({embed});	
 	}
 });
 
@@ -780,30 +786,24 @@ client.on('message', message => {
         
 	var argsowo = args.splice(1).join(" ");
         const opts = {
-          query: argsowo,
-          // search: 'superman theme', // same as opts.query
-          pageStart: 1, // first page result
-          pageEnd: 1, // until page 3
+          query: argsowo,    
+          pageStart: 1,
+          pageEnd: 1,
         }
 
-          yts( opts, function ( err, r ) {
+           yts( opts, function ( err, r ) {
            if ( err ) throw err
-	
-		  
-	
+			 	
            const videos = r.videos
            const video = videos[ 0 ].url;
-	   var username = message.author.username
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-	   const urlSt =  video.toString(); 
-	   const playVid = videosA[0];  
 		  
-        if (!channel){
-    return message.channel.sendMessage(":x: You are not in a voice channel!!");
-        }
+        	if (!channel){
+    		return message.channel.sendMessage(":x: You are not in a voice channel!!");
+        	}
 	const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
@@ -812,20 +812,19 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-	
-		  console.dir(videosA);
 
-    channel.join()
-     .then(connection => {
+
+    	channel.join()
+    	.then(connection => {
 	    
-            connection.playOpusStream(ytdl(`${playVid}`), {
+       connection.playOpusStream(ytdl(`${video}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("end", () => {
                 channel.leave();
             })
-        });
-        } )
+       	   });
+       	   } )
 
     }
     });
