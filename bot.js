@@ -787,34 +787,40 @@ client.on('message', message => {
 client.on('message', async message => {
     if (message.author === client.user) return;
 	const serverQueue = queue.get(message.guild.id);
+	const channel = message.member.voiceChannel;
 	console.log(message.guild.id);
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
-        
-	    const opts = {
+         const videos ="";
+	 const video ="";  
+	 const avatar =""; 
+	 const Title ="";
+	 const duration ="";   
+	  const opts = {
           query: argsowo,
           // search: 'superman theme', // same as opts.query
           pageStart: 1, // first page result
           pageEnd: 1, // until page 3
-        }
+          }
 
           yts( opts, function ( err, r ) {
            if ( err ) throw err
-	
-           const videos = r.videos
-           const video = videos[ 0 ].url;
-	   var username = message.author.username
-	   var avatar = videos[ 0 ].image;
-	   var Title = videos[ 0 ].title;	
-	   var duration = videos[ 0 ].duration.timestamp;
-	   const channel = message.member.voiceChannel;
-	
+           videos = r.videos
+           video = videos[ 0 ].url.toString();
+	   avatar = videos[ 0 ].image.toString();
+	   Title = videos[ 0 ].title.toString();	
+	   duration = videos[ 0 ].duration.timestamp.toString();
+	   
+	} )
+	    
 	 const song = {
 		title: Title,
 		url: video
 	}
-	 
+	if (!channel){
+    	return message.channel.sendMessage(":x: You are not in a voice channel!!");
+        } 
 	
 	if(!serverQueue){
     	const queueConstruct = {
@@ -830,10 +836,7 @@ client.on('message', async message => {
 	console.log(queue)
 	queueConstruct.songs.push(song);
 		
-		
-      	if (!channel){
-    	return message.channel.sendMessage(":x: You are not in a voice channel!!");
-        }
+
        const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
@@ -843,7 +846,7 @@ client.on('message', async message => {
 	.setURL(video)
      	message.channel.send({embed});
     	
-		try{
+	try{
 	var connection = await channel.join();
 	queueConstruct.connection = connection;
 	play(message.guild, queueConstruct.songs[0]);
@@ -858,7 +861,7 @@ client.on('message', async message => {
     	}	  
     
 	
-      	} )
+      
     	}
     	});
 
