@@ -798,10 +798,12 @@ client.on('message', async message => {
 		url: songInfo.video_url
 	};
 	
-	
-        
-	
-	if(!serverQueue){
+	if (serverQueue) {
+			serverQueue.songs.push(song);
+			console.log(serverQueue.songs);
+			return message.channel.send(`✅ **${song.title}** has been added to the queue!`);
+		}
+	    
     	const queueConstruct = {
     	textChannel : message.channel,
     	voiceChannel : channel,
@@ -812,11 +814,27 @@ client.on('message', async message => {
 	
 	
 	queueConstruct.songs.push(song);
-    	queue.set(message.guild.id, queueConstruct);
-
-			
+    	queue.set(message.guild.id, queueConstruct);		
 	console.log(queueConstruct.songs);
      
+	const play = async song => {
+			const queue = message.client.queue.get(message.guild.id);
+			if (!song) {
+				queue.voiceChannel.leave();
+				message.client.queue.delete(message.guild.id);
+				return;
+			}
+
+			const dispatcher = queue.connection.play(ytdl(song.url))
+				.on('finish', () => {
+					queue.songs.shift();
+					play(queue.songs[0]);
+				})
+				.on('error', error => console.error(error));
+			dispatcher.setVolumeLogarithmic(queue.volume / 5);
+			queue.textChannel.send(`🎶 Start playing: **${song.title}**`);
+		};	
+		
 
     	
 	try{
@@ -824,24 +842,13 @@ client.on('message', async message => {
 	queueConstruct.connection = connection;
 	queue.set(message.guild.id, queueConstruct);
 		
-	play(message.guild, queueConstruct.songs[0]);
+	play(queueConstruct.songs[0]);
 		}catch (error){
 			console.log("error joining");
 		queue.delete(message.guild.id);	
-		}
-    	} else {
-	
-	serverQueue.songs.push(song);		
-	message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-		
-		
-		console.dir(serverQueue.songs, {'maxArrayLength': null});
-
-		
-    	}	  
-    
-	
-      
+			await channel.leave();
+			return message.channel.send(`I could not join the voice channel: ${error}`);
+		}  
     	}
     	});
 
