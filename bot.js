@@ -826,6 +826,7 @@ client.on('message', async message => {
 		
 	play(message.guild, queueConstruct.songs[0]);
 		}catch (error){
+			console.log("error joining");
 		queue.delete(message.guild.id);	
 		}
     	} else {
