@@ -881,7 +881,7 @@ serverQueue.voiceChannel.leave();
 queue.delete(guild.id);	
 	return;	
 }
-	const dispatches = serverQueue.connection.playOpusStream(ytdl(song),{
+	const dispatches = serverQueue.connection.playOpusStream(ytdl(song.url),{
 	type:"opus"			  
 	})
 	.on('end', ()=>{
