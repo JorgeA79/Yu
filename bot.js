@@ -814,9 +814,9 @@ client.on('message', async message => {
 	   
 	} )
 	    
-	 const song = {
-		title: Title,
-		url: video
+	const song = {
+		title: "owo",
+		url: argsowo
 	}
 	if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
