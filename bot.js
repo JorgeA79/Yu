@@ -788,7 +788,7 @@ client.on('message', async message => {
     if (message.author === client.user) return;
 	const serverQueue = queue.get(message.guild.id);
 	const channel = message.member.voiceChannel;
-	console.log(message.guild.id);
+
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
@@ -823,6 +823,7 @@ client.on('message', async message => {
 	try{
 	var connection = await channel.join();
 	queueConstruct.connection = connection;
+	queue.set(message.guild.id, queueConstruct);
 		
 	play(message.guild, queueConstruct.songs[0]);
 		}catch (error){
@@ -882,7 +883,7 @@ serverQueue.voiceChannel.leave();
 queue.delete(guild.id);	
 	return;	
 }
-	console.log(serverQueue.connection);
+	console.dir(serverQueue.connection);
 	serverQueue.connection.playOpusStream(ytdl(song.url),{
     		type:"opus"              
     	})
