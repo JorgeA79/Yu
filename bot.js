@@ -821,16 +821,22 @@ client.on('message', message => {
     	channel.join()
     	.then(connection => {
 	    
-       connection.playOpusStream(ytdl(`${array}`), {
+	if(array.length == 0){ 
+	        channel.leave();
+		}else{
+       		connection.playOpusStream(ytdl(`${array}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("end", () => {
-	        array.shift();
+	       
+	      	array.shift();
                 connection.playOpusStream(ytdl(`${array}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
+           	 })  
             })
-            })
+		}
        	   });
+		   
        	   } )
 
     }
