@@ -880,12 +880,17 @@ function play(guild, song)
 	
 console.log(song.url);	
 const serverQueue = queue.get(message.guild.id);
-
-	let dispatcher = serverQueue.connection.playOpusStream(ytdl(song.url))		
-	dispatcher.on("end", () => {	
-	serverQueue.songs.shift();
-})
-	    
+if(!song){
+serverQueue.voiceChannel.leave();
+queue.delete(guild.id);
+    return;
+}
+	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
+	  .on('end', (){
+	     serverQueue.songs.shift();
+		play(guild, serverQueue.songs[0]);
+	      })
+	      dispatcher.setVolumeLogarithmic(5/5)
 }
 
 client.login(process.env.BOT_TOKEN);
