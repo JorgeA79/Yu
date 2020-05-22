@@ -844,7 +844,7 @@ client.on('message', async message => {
 		
 	play(queueConstruct.songs[0]);
 		}catch (error){
-			console.log("error joining");
+		console.error(`I could not join the voice channel: ${error}`);
 		queue.delete(message.guild.id);	
 			await channel.leave();
 			return message.channel.send(`I could not join the voice channel: ${error}`);
@@ -882,23 +882,7 @@ client.on('message', message => {
 });
 
 
-function play(guild, song)
-{
-	
-console.log(song.url);	
-const serverQueue = queue.get(message.guild.id);
-if(!song){
-serverQueue.voiceChannel.leave();
-queue.delete(guild.id);
-    return;
-}
-	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-	  .on('end', () => {
-	     serverQueue.songs.shift();
-		play(guild, serverQueue.songs[0]);
-	      })
-	      dispatcher.setVolumeLogarithmic(5/5)
-}
+
 
 client.login(process.env.BOT_TOKEN);
 
