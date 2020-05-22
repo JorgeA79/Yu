@@ -798,9 +798,8 @@ client.on('message', async message => {
 		url: songInfo.video_url
 	};
 	
-	if (!channel){
-    	return message.channel.sendMessage(":x: You are not in a voice channel!!");
-        } 
+	if (!channel) return message.channel.sendMessage(":x: You are not in a voice channel!!");
+        
 	
 	if(!serverQueue){
     	const queueConstruct = {
