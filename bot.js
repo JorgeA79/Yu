@@ -831,7 +831,7 @@ client.on('message', async message => {
 	
 	serverQueue.songs.push(song);		
 	message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
-		 	console.log(serverQueue.songs);
+		 	console.dir(serverQueue.songs);
 		
     	}	  
     
