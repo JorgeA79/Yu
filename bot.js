@@ -767,13 +767,19 @@ client.on('message', message => {
 	if (message.content.startsWith(prefix + 'image')) {
 	const args = message.content.slice(prefix.length).split(' ');
 	var argsowo = args.splice(1).join(" ");
+		 
+	searcher.GoogleImages(argsowo, (link, timeMilli) => {
+    	console.log(`Found link: ${link}`);
+    	console.log(`Took ${timeMilli}ms`);
 	const embed = new Discord.RichEmbed()
 	.setDescription(`Results for ${argsowo}`)	
 	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
   	.setColor(0x7AFFA8)	
-	.setImage('https://i.imgur.com/wSTFkRM.png')
+	.setImage(`${link}`)
 	.setTimestamp()
 	 message.channel.send({embed});	
+	})
+	
 	}
 });
 
