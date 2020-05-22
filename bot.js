@@ -804,15 +804,6 @@ client.on('message', async message => {
           pageEnd: 1, // until page 3
           }
 
-          yts( opts, function ( err, r ) {
-           if ( err ) throw err
-           videos = r.videos
-           video = videos[ 0 ].url.toString();
-	   avatar = videos[ 0 ].image.toString();
-	   Title = videos[ 0 ].title.toString();	
-	   duration = videos[ 0 ].duration.timestamp.toString();
-	   
-	} )
 	    
 	const song = {
 		title: "owo",
