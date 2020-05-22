@@ -884,13 +884,7 @@ queue.delete(guild.id);
 	return;	
 }
 	console.log(song.url);
-	serverQueue.connection.playOpusStream(ytdl(song.url),{
-    		type:"opus"              
-    	})
-    		.on('end', ()=>{
-    		serverQueue.songs.shift();
-    		play(guild, serverQueue.songs[0]);        
-    })	
+
 }
 
 client.login(process.env.BOT_TOKEN);
