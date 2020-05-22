@@ -881,10 +881,8 @@ function play(guild, song)
 console.log(song.url);	
 const serverQueue = queue.get(message.guild.id);
 
-	serverQueue.connection.playOpusStream(ytdl(song.url),{
-	type:"opus"			  
-	})		
-	.on("end", () => {	
+	let dispatcher = serverQueue.connection.playOpusStream(ytdl(song.url))		
+	dispatcher.on("end", () => {	
 	serverQueue.songs.shift();
 })
 	    
