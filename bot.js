@@ -820,13 +820,11 @@ client.on('message', async message => {
     	connection : null,
     	songs: [],
     	volume: 5,
-
     	} 
 	
     	queue.set(message.guild.id, queueConstruct);
 	console.log(queue)
-	queueConstruct.songs.push(song);
-		
+	queueConstruct.songs.push(song);		
 
        const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
@@ -847,7 +845,7 @@ client.on('message', async message => {
     	} else {
 	
 	serverQueue.songs.push(song);		
-	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
+	message.channel.sendMessage(`**xd** has been added to the queue!`);
 		
     	}	  
     
