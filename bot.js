@@ -819,7 +819,7 @@ client.on('message', message => {
 	array.push(video.toString()); 
 	console.dir(array);
     	
-	if(array.length == 1){
+	if(array.length > 0 && array.length < 2 ){
 	channel.join()
     	.then(connection => {
 	    
