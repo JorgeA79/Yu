@@ -792,23 +792,13 @@ client.on('message', async message => {
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
         var argsowo = args.splice(1).join(" ");
-         const videos ="";
-	 const video ="";  
-	 const avatar =""; 
-	 const Title ="";
-	 const duration ="";   
-	  const opts = {
-          query: argsowo,
-          // search: 'superman theme', // same as opts.query
-          pageStart: 1, // first page result
-          pageEnd: 1, // until page 3
-          }
 
 	    
 	const song = {
 		title: "owo",
-		url: argsowo
+		url: "https://www.youtube.com/watch?v=b-WMFOLb-Zo"
 	}
+	
 	if (!channel){
     	return message.channel.sendMessage(":x: You are not in a voice channel!!");
         } 
