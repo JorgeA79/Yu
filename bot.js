@@ -56,6 +56,8 @@ client.on('ready',() => {
 
 //////////////////////////////////////// V A R I A B L E S ////////////////////////////////////////
 var array = new Array();
+const queue = new Map();
+
 var levels = "0"
 var levelsequ = "0"
 var nextlevel = "0"
@@ -783,32 +785,57 @@ client.on('message', message => {
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
-client.on('message', message => {
+client.on('message', async message => {
     if (message.author === client.user) return;
+	const serverQueue = queue.get(message.guild.id);
+	console.log(message.guild.id);
     if (message.content.startsWith(prefix + 'play')) {
     const args = message.content.slice(prefix.length).split(' ');
+        var argsowo = args.splice(1).join(" ");
         
-	var argsowo = args.splice(1).join(" ");
-        const opts = {
-          query: argsowo,    
-          pageStart: 1,
-          pageEnd: 1,
+	    const opts = {
+          query: argsowo,
+          // search: 'superman theme', // same as opts.query
+          pageStart: 1, // first page result
+          pageEnd: 1, // until page 3
         }
 
-           yts( opts, function ( err, r ) {
+          yts( opts, function ( err, r ) {
            if ( err ) throw err
-			 	
+	
            const videos = r.videos
            const video = videos[ 0 ].url;
+	   var username = message.author.username
 	   var avatar = videos[ 0 ].image;
 	   var Title = videos[ 0 ].title;	
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
-		  
-        	if (!channel){
-    		return message.channel.sendMessage(":x: You are not in a voice channel!!");
-        	}
-	const embed = new Discord.RichEmbed()
+	
+	 const song = {
+		title: Title,
+		url: video
+	}
+	 
+	
+	if(!serverQueue){
+    	const queueConstruct = {
+    	textChannel : message.channel,
+    	voiceChannel : channel,
+    	connection : null,
+    	songs: [],
+    	volume: 5,
+
+    	} 
+	
+    	queue.set(message.guild.id, queueConstruct);
+	console.log(queue)
+	queueConstruct.songs.push(song);
+		
+		
+      	if (!channel){
+    	return message.channel.sendMessage(":x: You are not in a voice channel!!");
+        }
+       const embed = new Discord.RichEmbed()
 	 .setTitle(Title)
   	.setAuthor("PixelEdits","https://cdn.discordapp.com/avatars/710373309279109129/3bccbda5edd8e7228a8ba9166385f349.png?size=256")
   	.setColor(0x7AFFA8)
@@ -816,44 +843,26 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-	
     	
-	if(array.length == 0){
-	array.push(video.toString()); 
-	console.dir(array);
-	channel.join()
-    	.then(connection => {
-	    
-	
-       		connection.playOpusStream(ytdl(`${array}`), {
-                type: "opus" // type: opus is compulsory because this package returns opus stream
-            })
-            .on("end", () => {
-		array.shift();	
-	       if(array.length == 0){ 
-	        	channel.leave();
-		}	else
-		{
-	      	
-                connection.playOpusStream(ytdl(`${array}`), {
-                type: "opus" // type: opus is compulsory because this package returns opus stream
-           	 }) 
-			
+		try{
+	var connection = await channel.join();
+	queueConstruct.connection = connection;
+	play(message.guild, queueConstruct.songs[0]);
+		}catch (error){
+		queue.delete(message.guild.id);	
 		}
-            })
+    	} else {
+	
+	serverQueue.songs.push(song);		
+	return message.channel.sendMessage(`**${song.title}** has been added to the queue!`);
 		
-       	   });
-		
-	}else{
-	array.push(video.toString()); 
-	console.dir(array);
-	 return message.channel.sendMessage(`Added **${Title}** to the queue`);
-	}
-		   
-       	   } )
+    	}	  
+    
+	
+      	} )
+    	}
+    	});
 
-    }
-    });
 
 ///////////////////////////////////////////////// M U S I C /////////////////////////////////////////////////////////////////
 
@@ -882,6 +891,28 @@ client.on('message', message => {
 	}
 		
 });
+
+
+function play(guild, song)
+{
+   const serverQueue = queue.get(message.guild.id);
+if(!song){
+serverQueue.voiceChannel.leave();	
+queue.delete(guild.id);	
+	return;
+	
+}
+     const dispatcher = serverQueue.connection.playOpusStream(ytdl(song.url),{
+	type:"opus"			  
+	})
+	.on("end", () => {
+		
+	serverQueue.songs.shift();
+	play(guild, serverQueue.songs[0])
+		
+      	})
+
+}
 
 client.login(process.env.BOT_TOKEN);
 
