@@ -55,7 +55,7 @@ client.on('ready',() => {
 /////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 //////////////////////////////////////// V A R I A B L E S ////////////////////////////////////////
-var videosA= ["https://www.youtube.com/watch?v=Dst9gZkq1a8"];
+var array = new Array();
 var levels = "0"
 var levelsequ = "0"
 var nextlevel = "0"
@@ -816,12 +816,12 @@ client.on('message', message => {
   	.setThumbnail(avatar)
 	.setURL(video)
      	message.channel.send({embed});
-
-
+	array.push(video.toString()); 
+	
     	channel.join()
     	.then(connection => {
 	    
-       connection.playOpusStream(ytdl(`${video}`), {
+       connection.playOpusStream(ytdl(`${array}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("end", () => {
