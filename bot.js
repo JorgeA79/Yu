@@ -799,7 +799,7 @@ client.on('message', message => {
 	   var duration = videos[ 0 ].duration.timestamp;
 	   const channel = message.member.voiceChannel;
 	   const urlSt =  video.toString(); 
-		  
+	   const playVid = videosA[0];  
 		  
         if (!channel){
     return message.channel.sendMessage(":x: You are not in a voice channel!!");
@@ -818,7 +818,7 @@ client.on('message', message => {
     channel.join()
      .then(connection => {
 	    
-            connection.playOpusStream(ytdl(`${video}`), {
+            connection.playOpusStream(ytdl(`${playVid}`), {
                 type: "opus" // type: opus is compulsory because this package returns opus stream
             })
             .on("end", () => {
