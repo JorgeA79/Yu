@@ -868,19 +868,21 @@ client.on('message', message => {
 });
 
 
- async function play(guild, song)
+function play(guild, song)
 {
    const serverQueue = queue.get(message.guild.id);
 if(!song){
 serverQueue.voiceChannel.leave();	
 queue.delete(guild.id);	
-	return;
-	
+	return;	
 }
-   const input = await ytdl(song)
-  const pcm = input.pipe(new prism.opus.Decoder({ rate: 48000, channels: 2, frameSize: 960 }));
-
-  const dispatcher = connection.playConvertedStream(pcm);
+	const dispatches = serverQueue.connection.playOpusStream(ytdl(song),{
+	type:"opus"			  
+	})
+	.on('end', ()=>{
+	serverQueue.songs.shift();
+	play(guild, serverQueue.songs[0]);		
+	})	
 }
 
 client.login(process.env.BOT_TOKEN);
